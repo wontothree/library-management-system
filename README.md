@@ -159,3 +159,16 @@ erDiagram
     members ||--o{ loan : "borrows"
     books ||--o{ loan : "is loaned"
 ```
+
+# Getting Started
+
+```bash
+mysql -u root -h 127.0.0.1 -p 
+Enter password: 
+
+mysql> 
+
+CREATE DATABASE library_management
+USE library_management
+SOURCE /Users/kevinliam/Desktop/anthony/development/library-management-system/src/database/schema.sql;
+```
