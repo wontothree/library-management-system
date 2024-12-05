@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class BookDAO {
 
 	public boolean addBook(Book book) {
-		String sql = "INSERT INTO book (book_id, book_title, author_name, publisher, publication_date, purchase_date, category, domestic) " +
+		String sql = "INSERT INTO books (book_id, book_title, author_name, publisher, publication_date, purchase_date, category, domestic) " +
 				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		int rows = 0;
 
