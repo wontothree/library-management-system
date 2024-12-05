@@ -97,6 +97,12 @@ public class MainFrame extends javax.swing.JFrame {
 
 //        txtISBN = new javax.swing.JTextField();
         titleLabel = new javax.swing.JLabel();
+
+        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        txtDomestic = new javax.swing.JTextField();
+
+        // book title
         txtTitle = new javax.swing.JTextField();
         categoryLabel = new javax.swing.JLabel();
 //        quantityLabel = new javax.swing.JLabel();
@@ -117,6 +123,7 @@ public class MainFrame extends javax.swing.JFrame {
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // sidebar
+
         btnReturnToday.setBackground(new java.awt.Color(153, 102, 255));
         btnReturnToday.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnReturnToday.setForeground(new java.awt.Color(51, 51, 51));
@@ -127,7 +134,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // sidebar
         btnListIssuedBooks.setBackground(new java.awt.Color(153, 102, 255));
         btnListIssuedBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnListIssuedBooks.setForeground(new java.awt.Color(51, 51, 51));
@@ -138,7 +144,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // sidebar
         btnIssueBook.setBackground(new java.awt.Color(153, 102, 255));
         btnIssueBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnIssueBook.setForeground(new java.awt.Color(51, 51, 51));
@@ -149,7 +154,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // sidebar
         btnSearchBook.setBackground(new java.awt.Color(153, 102, 255));
         btnSearchBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSearchBook.setForeground(new java.awt.Color(51, 51, 51));
@@ -160,7 +164,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // sidebar
         btnListBooks.setBackground(new java.awt.Color(153, 102, 255));
         btnListBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnListBooks.setForeground(new java.awt.Color(51, 51, 51));
@@ -171,7 +174,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // sidebar: Add Book
         btnAddBook.setBackground(new java.awt.Color(153, 102, 255));
         btnAddBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAddBook.setForeground(new java.awt.Color(51, 51, 51));
@@ -189,6 +191,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         // set size
         panelSearchBook.setPreferredSize(new java.awt.Dimension(1000, 600));
+
+        // search book
 
         // combobox in page 'search book'
         comboBoxSearchBy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -283,6 +287,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+        // list all books
+
         scrollPaneBookAuthor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         bookAuthorTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -355,6 +361,8 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanel.add(panelListBooks, "panelListBooks");
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // issue books
 
         txtSearchBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -543,6 +551,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+        // all issue books
+
         scrollPaneIssuedBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         issuedBooksTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -642,6 +652,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+        // returned books
+
         scrollPaneReturnToday.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         returnTodayTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -736,24 +748,18 @@ public class MainFrame extends javax.swing.JFrame {
         categoryLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         categoryLabel.setText("Category");
         txtCategory.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-//        comboBoxCategory.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-//        comboBoxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Language", "Programming" }));
-//        comboBoxCategory.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                comboBoxCategoryActionPerformed(evt);
-//            }
-//        });
-
-        // domestic
-        domesticLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        domesticLabel.setText("Domestic/Foregin");
         comboBoxCategory.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        comboBoxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Domestic", "Foregin"}));
+        comboBoxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Language", "Programming" }));
         comboBoxCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxCategoryActionPerformed(evt);
             }
         });
+
+        // domestic
+        domesticLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        domesticLabel.setText("Domestic/Foregin");
+        txtDomestic.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         btnAdd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAdd.setText("Add ");
@@ -789,8 +795,8 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(purchaseDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 //                                .addComponent(isbnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(authorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                )
                                 .addComponent(domesticLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                )
 //                                .addComponent(authorEmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 //                            .addComponent(quantityLabel))
                                 )
@@ -807,7 +813,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(txtPublisher)
                             .addComponent(txtPublicationDate)
                             .addComponent(txtPurchaseDate)
-//                            .addComponent(txtQuantity)))
+                            .addComponent(txtDomestic)
                             ))
                     .addGroup(panelAddBookLayout.createSequentialGroup()
                         .addGap(279, 279, 279)
@@ -823,6 +829,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
+
                 // book title
                 .addGroup(panelAddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtTitle)
@@ -862,14 +869,13 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(panelAddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(categoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addComponent(comboBoxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    )
+                    .addComponent(comboBoxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
 
                 // domestic
                 .addGroup(panelAddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(domesticLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(comboBoxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtDomestic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
 
 //                .addGroup(panelAddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1104,54 +1110,72 @@ public class MainFrame extends javax.swing.JFrame {
        }
     } //GEN-LAST:event_btnReturnTodayActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-//        String isbn = txtISBN.getText().trim();
-        String isbn = "isbn";
+    /**
+     * @brief event handler for add button in page 'Add Book'
+     * @param evt
+     */
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_btnAddActionPerformed
         String title = txtTitle.getText().trim();
+        String name = txtAuthorName.getText().trim();
+        String publisher = txtPublisher.getText().trim();
+        String publicationDate = txtPublicationDate.getText().trim();
+        String purchaseDate = txtPurchaseDate.getText().trim();
         String category = txtCategory.getText().trim();
+        String domestic = txtDomestic.getText().trim();
+
 //        String q = txtQuantity.getText().trim();
         String q = "quality";
-        String name = txtAuthorName.getText().trim();
+//        String isbn = txtISBN.getText().trim();
+        String isbn = "isbn";
 //        String email = txtAuthorEmail.getText().trim();
 
         // test
         String email = "email";
-        
-        if(isbn.equals("") || title.equals("") || category.equals("") || name.equals("") || email.equals("") || q.equals(""))
+
+        // is empty
+        if(title.equals("")  || name.equals("") || publisher.equals("") || publicationDate.equals("") || purchaseDate.equals("") || category.equals("") || domestic.equals(""))
         {
             JOptionPane.showMessageDialog(panelAddBook, "Fields can't be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        int numBooks;
-        try{
-            numBooks = Integer.parseInt(q);
-            if(numBooks <= 0)
-            {
-                throw new Exception();
-            }
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(panelAddBook, "Please enter valid quantity", "Invalid Quantity", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        
-        
-        if( dao.addBook(new Book(isbn, title, category, numBooks)) && dao.addAuthor(new Author(name, email, isbn)) )
-        {
-            JOptionPane.showMessageDialog(panelAddBook, "Book details added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-//            txtISBN.setText("");
-            txtTitle.setText("");
-            txtCategory.setText("");
-//            txtQuantity.setText("");
-            txtAuthorName.setText("");
-//            txtAuthorEmail.setText("");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(panelAddBook, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+
+//        int numBooks;
+//        try{
+//            numBooks = Integer.parseInt(q);
+//            if(numBooks <= 0)
+//            {
+//                throw new Exception();
+//            }
+//        }
+//        catch(Exception e)
+//        {
+//            JOptionPane.showMessageDialog(panelAddBook, "Please enter valid quantity", "Invalid Quantity", JOptionPane.ERROR_MESSAGE);
+//            return;
+//        }
+
+//        // store
+//        if( dao.addBook(new Book(isbn, title, category, numBooks)) && dao.addAuthor(new Author(name, email, isbn)) )
+//        {
+//            JOptionPane.showMessageDialog(panelAddBook, "Book details added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+////            txtISBN.setText("");
+//            txtTitle.setText("");
+//            txtCategory.setText("");
+////            txtQuantity.setText("");
+//            txtAuthorName.setText("");
+////            txtAuthorEmail.setText("");
+//        }
+//        else
+//        {
+//            JOptionPane.showMessageDialog(panelAddBook, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+//        }
+        System.out.println(title);
+        System.out.println(name);
+        System.out.println(publisher);
+        System.out.println(publicationDate);
+        System.out.println(purchaseDate);
+        System.out.println(category);
+        System.out.println(domestic);
+
     } //GEN-LAST:event_btnAddActionPerformed
 
     private void btnSearchBookIssue1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchBookIssue1ActionPerformed
@@ -1359,6 +1383,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel titleLabel;
 
     // text field
+
+    private javax.swing.JTextField txtDomestic;
+
 //    private javax.swing.JTextField txtAuthorEmail;
     private javax.swing.JTextField txtAuthorName;
     private javax.swing.JTextField txtCategory;
@@ -1366,6 +1393,8 @@ public class MainFrame extends javax.swing.JFrame {
 //    private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearchBook;
+
+    // book title
     private javax.swing.JTextField txtTitle;
     private javax.swing.JTextField txtUsn;
     private javax.swing.JTextField txtUsnSearch;
@@ -1374,5 +1403,4 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtPurchaseDate;
 
     private javax.swing.JLabel usnLabel;
-    // End of variables declaration//GEN-END:variables
 }
