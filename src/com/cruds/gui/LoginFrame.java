@@ -8,11 +8,12 @@ import javax.swing.JOptionPane;
 public class LoginFrame extends javax.swing.JFrame {
 
     public LoginFrame() {
-        
         initComponents();
-          
     }
 
+    /**
+     * @brief initialize component
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -25,16 +26,19 @@ public class LoginFrame extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
 
+        // terminate app when closing window
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Welcome to SIT Library");
+
+        // title
+        setTitle("Library Management System");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Welcome to SIT Library");
+        jLabel1.setText("Library Management System");
 
         LabelAdmin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        LabelAdmin.setText("Admin ID:");
+        LabelAdmin.setText("ID:");
 
         LabelPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         LabelPass.setText("Password:");
@@ -117,20 +121,24 @@ public class LoginFrame extends javax.swing.JFrame {
         panelLogin.getAccessibleContext().setAccessibleName("");
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    } // </editor-fold>//GEN-END:initComponents
 
     private void txtAdminIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdminIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAdminIdActionPerformed
+    } //GEN-LAST:event_txtAdminIdActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String id = txtAdminId.getText().trim();
         String password = String.valueOf(txtPassword.getPassword()).trim();
+
+        // is empty
         if(id.length() == 0 || password.length() == 0)
         {
             JOptionPane.showMessageDialog(panelLogin, "Please enter Email and password", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
+        // is valid
         AdminDAO dao = new AdminDAO();
         if(dao.isValidAdmin(new Admin(id, password)))
         {
@@ -144,7 +152,7 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(panelLogin, "Invalid Login!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-    }//GEN-LAST:event_btnLoginActionPerformed
+    } //GEN-LAST:event_btnLoginActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

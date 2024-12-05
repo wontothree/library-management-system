@@ -169,3 +169,18 @@ CREATE DATABASE library_management
 USE library_management
 SOURCE /Users/kevinliam/Desktop/anthony/development/library-management-system/src/database/schema.sql;
 ```
+
+```bash
+cd /Users/kevinliam/Desktop/anthony/development/java-ui/Library-Management/src
+javac com/cruds/gui/MainFrame.java
+
+# build
+javac -d . com/cruds/db/*.java com/cruds/model/*.java com/cruds/gui/MainFrame.java
+
+# start
+java -cp . com.cruds.gui.MainFrame
+```
+
+# Frondend
+
+- Signup

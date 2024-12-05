@@ -9,8 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Akshat Agarwal
+ * @brief function for login validity
  */
 public class AdminDAO {
     
@@ -19,7 +18,7 @@ public class AdminDAO {
         String sql = "select admin_id, password from admin where admin_id = ? and password = ?";
         
         try(Connection conn = DBConnectionManager.getConnection())
-	{
+	    {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, admin.getId());
             ps.setString(2, admin.getPassword());
@@ -31,11 +30,10 @@ public class AdminDAO {
                     return true;
                 }
             }
-            
         } catch (SQLException ex) {
             Logger.getLogger(AdminDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return false;
     }
-    
 }
