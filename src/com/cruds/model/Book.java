@@ -1,54 +1,82 @@
 package com.cruds.model;
 
 public class Book {
-	
-	private String isbn;
-	private String title;
-	private String Category;
-	private int quantity;
-	
-	public Book(String isbn, String title, String category, int quantity) {
-		this.isbn = isbn;
-		this.title = title;
-		Category = category;
-		this.quantity = quantity;
+
+	private String bookTitle;
+	private String authorName;
+	private String publisher;
+	private String publicationDate;
+	private String purchaseDate;
+	private String bookId;
+	private String category;
+	private String domestic;
+
+	// Constructor
+	public Book(String bookTitle, String authorName, String publisher, String publicationDate, String purchaseDate, String bookId, String category, String domestic) {
+		this.bookTitle = bookTitle;
+		this.authorName = authorName;
+		this.publisher = publisher;
+		this.publicationDate = publicationDate;
+		this.purchaseDate = purchaseDate;
+		this.bookId = bookId;
+		this.category = category;
+		this.domestic = domestic;
 	}
 
-	public String getIsbn() {
-		return isbn;
+	// Getters and Setters
+	public String getBookTitle() {
+		return bookTitle;
+	}
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
 	}
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public String getAuthorName() {
+		return authorName;
+	}
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public String getPublicationDate() {
+		return publicationDate;
+	}
+	public void setPublicationDate(String publicationDate) {
+		this.publicationDate = publicationDate;
+	}
+
+	public String getPurchaseDate() {
+		return purchaseDate;
+	}
+	public void setPurchaseDate(String purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+
+	public String getBookId() {
+		return bookId;
+	}
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
 	}
 
 	public String getCategory() {
-		return Category;
+		return category;
 	}
-
 	public void setCategory(String category) {
-		Category = category;
+		this.category = category;
 	}
 
-	public int getQuantity() {
-		return quantity;
+	public String getDomestic() {
+		return domestic;
 	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setDomestic(String domestic) {
+		this.domestic = domestic;
 	}
-
-	@Override
-	public String toString() {
-		return "" + isbn + "\t\t" + title + "\t\t" + Category + "\t\t" + quantity;
-	}
-	
 }

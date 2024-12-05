@@ -20,47 +20,52 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class BookDAO {
-	
-	public boolean addBook(Book book)
-	{
-		String sql = "insert into book(book_isbn, book_title, category, no_of_books) values(?, ?, ?, ?)";
+
+	public boolean addBook(Book book) {
+		String sql = "INSERT INTO book (book_id, book_title, author_name, publisher, publication_date, purchase_date, category, domestic) " +
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		int rows = 0;
-		
-		try(Connection conn = DBConnectionManager.getConnection())
-		{
+
+		try (Connection conn = DBConnectionManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, book.getIsbn());
-			ps.setString(2,  book.getTitle());
-			ps.setString(3, book.getCategory());
-			ps.setInt(4,  book.getQuantity());
-			
+
+			ps.setString(1, book.getBookId()); 			// book_id
+			ps.setString(2, book.getBookTitle()); 			// title
+			ps.setString(3, book.getAuthorName());    	// author_name
+			ps.setString(4, book.getPublisher()); 		// publisher
+			ps.setString(5, book.getPublicationDate()); 	// publication_date
+			ps.setString(6, book.getPurchaseDate()); 		// purchase_date
+			ps.setString(7, book.getCategory()); 			// category
+			ps.setString(8, book.getDomestic()); 			// domestic (국내 여부)
+
 			rows = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace(); // 예외 처리
 		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
+
+		// if success to insert
 		return rows > 0;
 	}
-	
+
+
 	public boolean addAuthor(Author author)
 	{
 		String sql = "insert into author(author_name, author_mail_id, book_isbn) values(?, ?, ?)";
 		int rows = 0;
-		
+
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, author.getName());
 			ps.setString(2,  author.getEmail());
 			ps.setString(3, author.getBook_isbn());
-			
+
 			rows = ps.executeUpdate();
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return rows > 0;
 	}
 	

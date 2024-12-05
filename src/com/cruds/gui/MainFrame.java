@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cruds.gui;
 
 import com.cruds.db.BookDAO;
@@ -18,7 +13,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class MainFrame extends javax.swing.JFrame {
-
     /**
      * Creates new form MainFrame
      */
@@ -82,38 +76,29 @@ public class MainFrame extends javax.swing.JFrame {
         returnTodayTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         panelAddBook = new javax.swing.JPanel();
-//        isbnLabel = new javax.swing.JLabel();
-
-        publisherLabel = new javax.swing.JLabel();
-        txtPublisher = new javax.swing.JTextField();
-
-        publicationDateLabel = new javax.swing.JLabel();
-        txtPublicationDate = new javax.swing.JTextField();
-
-        purchaseDateLabel = new javax.swing.JLabel();
-        txtPurchaseDate = new javax.swing.JTextField();
-
-        domesticLabel = new javax.swing.JLabel();
-
-//        txtISBN = new javax.swing.JTextField();
-        titleLabel = new javax.swing.JLabel();
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+        txtTitle = new javax.swing.JTextField();
+        txtAuthorName = new javax.swing.JTextField();
+        txtPublisher = new javax.swing.JTextField();
+        txtPublicationDate = new javax.swing.JTextField();
+        txtPurchaseDate = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        txtCategory = new javax.swing.JTextField();
         txtDomestic = new javax.swing.JTextField();
 
-        // book title
-        txtTitle = new javax.swing.JTextField();
-        categoryLabel = new javax.swing.JLabel();
-//        quantityLabel = new javax.swing.JLabel();
-        txtCategory = new javax.swing.JTextField();
-        comboBoxCategory = new javax.swing.JComboBox<>();
-//        txtQuantity = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
         authorLabel = new javax.swing.JLabel();
-        txtAuthorName = new javax.swing.JTextField();
-//        authorEmailLabel = new javax.swing.JLabel();
-//        txtAuthorEmail = new javax.swing.JTextField();
+        publisherLabel = new javax.swing.JLabel();
+        publicationDateLabel = new javax.swing.JLabel();
+        purchaseDateLabel = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
+        categoryLabel = new javax.swing.JLabel();
+        domesticLabel = new javax.swing.JLabel();
+
+        comboBoxCategory = new javax.swing.JComboBox<>();
+        btnAdd = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
 
@@ -740,9 +725,10 @@ public class MainFrame extends javax.swing.JFrame {
         purchaseDateLabel.setText("Purchase Date");
         txtPurchaseDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-//        quantityLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-//        quantityLabel.setText("Quantity");
-//        txtQuantity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        // id
+        idLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        idLabel.setText("Book ID");
+        txtId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         // categrory
         categoryLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -769,9 +755,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-//        authorEmailLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-//        authorEmailLabel.setText("Author Email");
-//        txtAuthorEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(219, 68, 85));
@@ -788,33 +771,34 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(100, 100, 100)
                         .addGroup(panelAddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelAddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(categoryLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(authorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(publisherLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(publicationDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(purchaseDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                                .addComponent(isbnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(authorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(categoryLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(domesticLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                )
-//                                .addComponent(authorEmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                            .addComponent(quantityLabel))
-                                )
+                            )
+                        )
+
                         .addGap(18, 18, 18)
                         .addGroup(panelAddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-//                            .addComponent(txtISBN)
-                            .addGroup(panelAddBookLayout.createSequentialGroup()
-                                .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(comboBoxCategory, 0, 1, Short.MAX_VALUE))
-//                            .addComponent(txtAuthorEmail)
                             .addComponent(txtAuthorName)
                             .addComponent(txtPublisher)
                             .addComponent(txtPublicationDate)
                             .addComponent(txtPurchaseDate)
+                            .addComponent(txtId)
+                            .addGroup(panelAddBookLayout.createSequentialGroup()
+                                    .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(comboBoxCategory, 0, 1, Short.MAX_VALUE)
+                            )
                             .addComponent(txtDomestic)
-                            ))
+                            )
+                        )
+
                     .addGroup(panelAddBookLayout.createSequentialGroup()
                         .addGap(279, 279, 279)
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -860,10 +844,10 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(txtPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
 
-//                .addGroup(panelAddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                    .addComponent(isbnLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                    .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-//                .addGap(37, 37, 37)
+                .addGroup(panelAddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
 
                 // category
                 .addGroup(panelAddBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1115,68 +1099,40 @@ public class MainFrame extends javax.swing.JFrame {
      * @param evt
      */
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_btnAddActionPerformed
-        String title = txtTitle.getText().trim();
-        String name = txtAuthorName.getText().trim();
+        String bookTitle = txtTitle.getText().trim();
+        String authorName = txtAuthorName.getText().trim();
         String publisher = txtPublisher.getText().trim();
         String publicationDate = txtPublicationDate.getText().trim();
         String purchaseDate = txtPurchaseDate.getText().trim();
+        String bookId = txtId.getText().trim();
         String category = txtCategory.getText().trim();
         String domestic = txtDomestic.getText().trim();
 
-//        String q = txtQuantity.getText().trim();
-        String q = "quality";
-//        String isbn = txtISBN.getText().trim();
-        String isbn = "isbn";
-//        String email = txtAuthorEmail.getText().trim();
-
-        // test
-        String email = "email";
-
         // is empty
-        if(title.equals("")  || name.equals("") || publisher.equals("") || publicationDate.equals("") || purchaseDate.equals("") || category.equals("") || domestic.equals(""))
+        if(bookTitle.equals("")  || authorName.equals("") || publisher.equals("") || publicationDate.equals("") || purchaseDate.equals("") || category.equals("") || domestic.equals(""))
         {
             JOptionPane.showMessageDialog(panelAddBook, "Fields can't be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-//        int numBooks;
-//        try{
-//            numBooks = Integer.parseInt(q);
-//            if(numBooks <= 0)
-//            {
-//                throw new Exception();
-//            }
-//        }
-//        catch(Exception e)
-//        {
-//            JOptionPane.showMessageDialog(panelAddBook, "Please enter valid quantity", "Invalid Quantity", JOptionPane.ERROR_MESSAGE);
-//            return;
-//        }
+        // store
+        if( dao.addBook(new Book(bookTitle, authorName, publisher, publicationDate, purchaseDate, bookId, category, domestic)) ) {
+            // success message
+            JOptionPane.showMessageDialog(panelAddBook, "Book details added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-//        // store
-//        if( dao.addBook(new Book(isbn, title, category, numBooks)) && dao.addAuthor(new Author(name, email, isbn)) )
-//        {
-//            JOptionPane.showMessageDialog(panelAddBook, "Book details added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-////            txtISBN.setText("");
-//            txtTitle.setText("");
-//            txtCategory.setText("");
-////            txtQuantity.setText("");
-//            txtAuthorName.setText("");
-////            txtAuthorEmail.setText("");
-//        }
-//        else
-//        {
-//            JOptionPane.showMessageDialog(panelAddBook, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-        System.out.println(title);
-        System.out.println(name);
-        System.out.println(publisher);
-        System.out.println(publicationDate);
-        System.out.println(purchaseDate);
-        System.out.println(category);
-        System.out.println(domestic);
-
-    } //GEN-LAST:event_btnAddActionPerformed
+            // initialize text field
+            txtTitle.setText("");
+            txtAuthorName.setText("");
+            txtPublisher.setText("");
+            txtPublicationDate.setText("");
+            txtPurchaseDate.setText("");
+            txtId.setText("");
+            txtCategory.setText("");
+            txtDomestic.setText("");
+        } else {
+            JOptionPane.showMessageDialog(panelAddBook, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     private void btnSearchBookIssue1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchBookIssue1ActionPerformed
         String usn = txtUsnSearch.getText().trim();
@@ -1316,15 +1272,16 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
+
     BookDAO dao = new BookDAO();
     String searchBy = null, searchBookBy = null;
     //int numBooks = 0;
     //String isbn, usn, title, category, name, email;
     // Variables declaration - do not modify//GEN-BEGIN:variables
 
+    // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
     private javax.swing.JComboBox<String> ComboBoxSearchBook;
-//    private javax.swing.JLabel authorEmailLabel;
-    private javax.swing.JLabel authorLabel;
     private javax.swing.JTable bookAuthorTable;
     private javax.swing.JScrollPane bookScrollPane;
     private javax.swing.JTable bookTable;
@@ -1343,16 +1300,41 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchBookIssue;
     private javax.swing.JButton btnSearchBookIssue1;
     private javax.swing.JButton btnSearchByUsn;
-    private javax.swing.JLabel categoryLabel;
     private javax.swing.JComboBox<String> comboBoxCategory;
     private javax.swing.JComboBox<String> comboBoxSearchBy;
 
     // label
-//    private javax.swing.JLabel isbnLabel;
+    private javax.swing.JLabel titleLabel;
+    private javax.swing.JLabel authorLabel;
     private javax.swing.JLabel publisherLabel;
     private javax.swing.JLabel publicationDateLabel;
     private javax.swing.JLabel purchaseDateLabel;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JLabel categoryLabel;
     private javax.swing.JLabel domesticLabel;
+
+    // text field
+    private javax.swing.JTextField txtTitle;
+    private javax.swing.JTextField txtAuthorName;
+    private javax.swing.JTextField txtPublisher;
+    private javax.swing.JTextField txtPublicationDate;
+    private javax.swing.JTextField txtPurchaseDate;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtCategory;
+    private javax.swing.JTextField txtDomestic;
+
+
+    private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtSearchBook;
+
+    // book title
+    private javax.swing.JTextField txtUsn;
+    private javax.swing.JTextField txtUsnSearch;
+
+    private javax.swing.JLabel usnLabel;
+
+
+
 
     private javax.swing.JTable issuedBooksTable;
     private javax.swing.JLabel jLabel1;
@@ -1369,7 +1351,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panelListBooks;
     private javax.swing.JPanel panelReturnToday;
     private javax.swing.JPanel panelSearchBook;
-//    private javax.swing.JLabel quantityLabel;
     private javax.swing.JTable returnTodayTable;
     private javax.swing.JScrollPane scrollPaneBookAuthor;
     private javax.swing.JScrollPane scrollPaneIssuedBooks;
@@ -1380,27 +1361,4 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTable searchTable;
     private javax.swing.JScrollPane studentScrollPane;
     private javax.swing.JTable studentTable;
-    private javax.swing.JLabel titleLabel;
-
-    // text field
-
-    private javax.swing.JTextField txtDomestic;
-
-//    private javax.swing.JTextField txtAuthorEmail;
-    private javax.swing.JTextField txtAuthorName;
-    private javax.swing.JTextField txtCategory;
-//    private javax.swing.JTextField txtISBN;
-//    private javax.swing.JTextField txtQuantity;
-    private javax.swing.JTextField txtSearch;
-    private javax.swing.JTextField txtSearchBook;
-
-    // book title
-    private javax.swing.JTextField txtTitle;
-    private javax.swing.JTextField txtUsn;
-    private javax.swing.JTextField txtUsnSearch;
-    private javax.swing.JTextField txtPublisher;
-    private javax.swing.JTextField txtPublicationDate;
-    private javax.swing.JTextField txtPurchaseDate;
-
-    private javax.swing.JLabel usnLabel;
 }
