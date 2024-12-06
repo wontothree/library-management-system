@@ -12,31 +12,38 @@ import com.cruds.model.Author;
 import com.cruds.model.Book;
 import com.cruds.model.Issue;
 import com.cruds.model.Student;
-import java.util.Calendar;
+
 import java.util.Vector;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class BookDAO {
 
+	/**
+	 * @brief Add Book
+	 * @param book
+	 * @return
+	 */
 	public boolean addBook(Book book) {
-		String sql = "INSERT INTO books (book_id, book_title, author_name, publisher, publication_date, purchase_date, category, domestic) " +
+
+		// sql insert statement table 'books'
+		String sql = "INSERT INTO books (book_id, book_title, author_name, publisher, publication_date, purchase_date, category, is_domestic) " +
 				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
 		int rows = 0;
 
 		try (Connection conn = DBConnectionManager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			ps.setString(1, book.getBookId()); 			// book_id
-			ps.setString(2, book.getBookTitle()); 			// title
+			ps.setString(2, book.getBookTitle()); 	    // title
 			ps.setString(3, book.getAuthorName());    	// author_name
 			ps.setString(4, book.getPublisher()); 		// publisher
 			ps.setString(5, book.getPublicationDate()); 	// publication_date
 			ps.setString(6, book.getPurchaseDate()); 		// purchase_date
 			ps.setString(7, book.getCategory()); 			// category
-			ps.setString(8, book.getDomestic()); 			// domestic (국내 여부)
+			ps.setBoolean(8, book.getDomestic()); 			// domestic
 
 			rows = ps.executeUpdate();
 		} catch (SQLException e) {
@@ -47,6 +54,53 @@ public class BookDAO {
 		return rows > 0;
 	}
 
+	/**
+	 * @brief List all Books with additional information such as purchase date
+	 * @return DefaultTableModel containing book details
+	 */
+	public DefaultTableModel getTableBooks() {
+		// SQL query: Select book information from the 'books' table
+		String sql = "SELECT book_id, book_title, author_name, publisher, publication_date, purchase_date, category, is_domestic FROM books";
+
+		// Column names: Adjusted to match the SQL query results
+		Vector<String> colNames = new Vector<>();
+		colNames.add("Book ID");              // book_id
+		colNames.add("Book Title");           // book_title
+		colNames.add("Author");               // author_name
+		colNames.add("Publisher");            // publisher
+		colNames.add("Publication Date");     // publication_date
+		colNames.add("Purchase Date");        // purchase_date
+		colNames.add("Category");             // category
+		colNames.add("Domestic/International"); // is_domestic
+
+		Vector<Vector<String>> data = new Vector<>();
+
+		// Database connection and query execution
+		try (Connection conn = DBConnectionManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			// Reading data from the ResultSet and adding to the table data
+			while (rs != null && rs.next()) {
+				Vector<String> row = new Vector<>();
+				row.add(rs.getString("book_id"));          // book_id
+				row.add(rs.getString("book_title"));       // book_title
+				row.add(rs.getString("author_name"));      // author_name
+				row.add(rs.getString("publisher"));        // publisher
+				row.add(rs.getString("publication_date")); // publication_date
+				row.add(rs.getString("purchase_date"));    // purchase_date
+				row.add(rs.getString("category"));         // category
+				row.add(rs.getString("is_domestic"));      // is_domestic (Domestic/International)
+				data.add(row);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		// Create and return DefaultTableModel object
+		return new DefaultTableModel(data, colNames);
+	}
 
 	public boolean addAuthor(Author author)
 	{
@@ -309,41 +363,7 @@ public class BookDAO {
 		}
 		return new DefaultTableModel(data, colNames);
 	}
-	
-	public DefaultTableModel getTableBookAuthor()
-	{
-		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where a.book_isbn = b.book_isbn";
-		Vector<String> colNames = new Vector<>();
-		colNames.add("Book ISBN");
-		colNames.add("Book Title");
-                colNames.add("Category");
-                colNames.add("Quantity");
-                colNames.add("Author");
-		
-		Vector<Vector<String>> data = new Vector<>();
-		
-		try(Connection conn = DBConnectionManager.getConnection())
-		{
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs != null && rs.next())
-			{
-				Vector<String> row = new Vector<>();
-				row.add(rs.getString(1));
-				row.add(rs.getString(2));
-                                row.add(rs.getString(3));
-                                row.add(String.valueOf(rs.getInt(4)));
-                                row.add(rs.getString(5));
-				data.add(row);
-			}
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return new DefaultTableModel(data, colNames);
-	}
-	
+
 	public boolean issueBook(Issue bi)
 	{
 		String sql = "insert into book_issue(issue_id, usn, issue_date, return_date, book_isbn) values(?, ?, ?, ?, ?)";

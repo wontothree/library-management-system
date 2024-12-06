@@ -9,10 +9,10 @@ public class Book {
 	private String purchaseDate;
 	private String bookId;
 	private String category;
-	private String domestic;
+	private boolean isDomestic;
 
 	// Constructor
-	public Book(String bookTitle, String authorName, String publisher, String publicationDate, String purchaseDate, String bookId, String category, String domestic) {
+	public Book(String bookTitle, String authorName, String publisher, String publicationDate, String purchaseDate, String bookId, String category, boolean isDomestic) {
 		this.bookTitle = bookTitle;
 		this.authorName = authorName;
 		this.publisher = publisher;
@@ -20,7 +20,7 @@ public class Book {
 		this.purchaseDate = purchaseDate;
 		this.bookId = bookId;
 		this.category = category;
-		this.domestic = domestic;
+		this.isDomestic = isDomestic;
 	}
 
 	// Getters and Setters
@@ -73,10 +73,10 @@ public class Book {
 		this.category = category;
 	}
 
-	public String getDomestic() {
-		return domestic;
+	public boolean getDomestic() {
+		return isDomestic;
 	}
-	public void setDomestic(String domestic) {
-		this.domestic = domestic;
+	public void setDomestic(boolean domestic) {
+		this.isDomestic = domestic;
 	}
 }

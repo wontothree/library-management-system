@@ -127,16 +127,16 @@ erDiagram
         date joined_at
     }
 
-    %% 도서 테이블을 정의합니다.
+    %% table books
     books {
-        int book_id PK
+        string book_id PK
         string book_name
         string author
         string publisher
         date publication_date
-        bool is_domestic
         date purchase_date
-        string category
+        string category  
+        bool is_domestic
     }
 
     %% 대출 테이블을 정의합니다.
