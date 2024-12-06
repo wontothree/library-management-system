@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.cruds.model.Author;
+// model
 import com.cruds.model.Book;
+import com.cruds.model.Member;
+
+import com.cruds.model.Author;
 import com.cruds.model.Issue;
 import com.cruds.model.Student;
 
@@ -26,7 +29,6 @@ public class BookDAO {
 	 * @return
 	 */
 	public boolean addBook(Book book) {
-
 		// sql insert statement table 'books'
 		String sql = "INSERT INTO books (book_id, book_title, author_name, publisher, publication_date, purchase_date, category, is_domestic) " +
 				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -55,7 +57,7 @@ public class BookDAO {
 	}
 
 	/**
-	 * @brief List all Books with additional information such as purchase date
+	 * @brief List all Books
 	 * @return DefaultTableModel containing book details
 	 */
 	public DefaultTableModel getTableBooks() {
@@ -102,6 +104,36 @@ public class BookDAO {
 		return new DefaultTableModel(data, colNames);
 	}
 
+	/**
+	 * @brief sign up
+	 * @param
+	 * @return
+	 */
+	public boolean addMember(Member member)
+	{
+		String sql = "INSERT INTO MEMBERS (member_id, full_name, phone_number, street_address, email_address) values(?, ?, ?, ?, ?)";
+
+		int rows = 0;
+
+		try(Connection conn = DBConnectionManager.getConnection())
+		{
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, member.getMemberId());
+			ps.setString(2, member.getFullName());
+			ps.setString(3, member.getPhoneNumber());
+			ps.setString(4, member.getStreetAddress());
+			ps.setString(5, member.getEmailAddress());
+
+			rows = ps.executeUpdate();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rows >= 0;
+	}
+
 	public boolean addAuthor(Author author)
 	{
 		String sql = "insert into author(author_name, author_mail_id, book_isbn) values(?, ?, ?)";
@@ -122,24 +154,24 @@ public class BookDAO {
 
 		return rows > 0;
 	}
-	
+
 	public boolean addStudent(Student stud)
 	{
 		String sql = "insert into student(usn, name) values(?, ?)";
 		int rows = 0;
-		
+
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, stud.getUsn());
 			ps.setString(2,  stud.getName());
-			
+
 			rows = ps.executeUpdate();
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return rows >= 0;
 	}
 	

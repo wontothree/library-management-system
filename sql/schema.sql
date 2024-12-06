@@ -8,3 +8,13 @@ CREATE TABLE books (
        category VARCHAR(100) NOT NULL,
        is_domestic bool NOT NULL
 );
+
+CREATE TABLE members (
+        member_id VARCHAR(255) PRIMARY KEY,
+        full_name VARCHAR(255) NOT NULL,
+        phone_number VARCHAR(20) NOT NULL,
+        street_address VARCHAR(255) NOT NULL,
+        email_address VARCHAR(255) NOT NULL,
+        is_vip BOOLEAN DEFAULT FALSE NOT NULL,
+        is_withdrawn BOOLEAN DEFAULT FALSE NOT NULL
+);

@@ -1,7 +1,6 @@
 package com.cruds.model;
 
 public class Book {
-
 	private String bookTitle;
 	private String authorName;
 	private String publisher;

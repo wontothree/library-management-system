@@ -89,14 +89,13 @@ export PYTHONPATH="/Users/kevinliam/Desktop/anthony/development/library-manageme
 erDiagram
     %% 멤버 테이블을 정의합니다.
     members {
-        int member_id PK
+        string member_id PK
         string full_name
         string phone_number
         string street_address
         string email_address
-        date withdrawn_at
         boolean is_vip_member
-        date account_created_at
+        boolean is_withdrawn
     }
 
     %% 그룹 테이블을 정의합니다.
@@ -105,19 +104,19 @@ erDiagram
         string group_name
         int leader_id FK
     }
+    
+    %% 클럽 테이블을 정의합니다.
+    clubs {
+        int club_id PK
+        string club_name
+        int leader_id FK
+    }
 
     %% 멤버-그룹 관계를 정의합니다.
     member_group {
         int member_id FK
         int group_id FK
         date joined_at
-    }
-
-    %% 클럽 테이블을 정의합니다.
-    clubs {
-        int club_id PK
-        string club_name
-        int leader_id FK
     }
 
     %% 멤버-클럽 관계를 정의합니다.
