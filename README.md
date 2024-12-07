@@ -94,7 +94,7 @@ erDiagram
         string phone_number
         string street_address
         string email_address
-        boolean is_vip_member
+        boolean is_vip
         boolean is_withdrawn
     }
 

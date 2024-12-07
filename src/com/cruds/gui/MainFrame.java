@@ -535,7 +535,7 @@ public class MainFrame extends javax.swing.JFrame {
         txtSearchBook.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         ComboBoxSearchBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ComboBoxSearchBook.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Title", "Author Name", "Publisher", "Book ID" }));
+        ComboBoxSearchBook.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Title", "Author", "Category", "ID" }));
         ComboBoxSearchBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxSearchBookActionPerformed(evt);
@@ -550,6 +550,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        // book table
         bookTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bookTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -560,7 +561,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -568,47 +569,30 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         bookTable.setRowHeight(20);
-        bookScrollPane.setViewportView(bookTable);
 //
-//        bookTable.getColumnModel().getColumn(0).setMinWidth(50);
-//        bookTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-//        bookTable.getColumnModel().getColumn(0).setMaxWidth(50);
+//        bookTable.addMouseListener(new java.awt.event.MouseAdapter() {
+//            public void mouseClicked(java.awt.event.MouseEvent evt) {
+//                // 선택된 행의 인덱스를 가져옴
+//                int selectedRow = bookTable.getSelectedRow(); // 선택된 행의 인덱스를 반환
 //
-//        bookTable.getColumnModel().getColumn(1).setMinWidth(200);
-//        bookTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-//        bookTable.getColumnModel().getColumn(1).setMaxWidth(300);
+//                if (selectedRow != -1) {
+//                    // 각 열의 값을 가져옴 (ID, Title, Author, Publisher, Category)
+//                    String bookId = bookTable.getValueAt(selectedRow, 0).toString();
 //
-//        bookTable.getColumnModel().getColumn(2).setMinWidth(50);
-//        bookTable.getColumnModel().getColumn(2).setPreferredWidth(80);
-//        bookTable.getColumnModel().getColumn(2).setMaxWidth(100);
-//
-//        bookTable.getColumnModel().getColumn(3).setMinWidth(50);
-//        bookTable.getColumnModel().getColumn(3).setPreferredWidth(50);
-//        bookTable.getColumnModel().getColumn(3).setMaxWidth(50);
-//
-//        bookTable.getColumnModel().getColumn(4).setMinWidth(100);
-//        bookTable.getColumnModel().getColumn(4).setPreferredWidth(100);
-//        bookTable.getColumnModel().getColumn(4).setMaxWidth(150);
-//
-//        bookTable.getColumnModel().getColumn(5).setMinWidth(100);
-//        bookTable.getColumnModel().getColumn(5).setPreferredWidth(100);
-//        bookTable.getColumnModel().getColumn(5).setMaxWidth(150);
-//
-//        bookTable.getColumnModel().getColumn(6).setMinWidth(80);
-//        bookTable.getColumnModel().getColumn(6).setPreferredWidth(80);
-//        bookTable.getColumnModel().getColumn(6).setMaxWidth(100);
-//
-//        bookTable.getColumnModel().getColumn(7).setMinWidth(80);
-//        bookTable.getColumnModel().getColumn(7).setPreferredWidth(80);
-//        bookTable.getColumnModel().getColumn(7).setMaxWidth(100);
+//                    System.out.println("ID: " + bookId);
+//                }
+//            }
+//        });
 
-        searchBookLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bookScrollPane.setViewportView(bookTable);
+
+        searchBookLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
         searchBookLabel.setText("Search Book");
 
-        searchStudentLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        searchStudentLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
         searchStudentLabel.setText("Search Member Phone");
 
-        txtUsnSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUsnSearch.setFont(new java.awt.Font("Tahoma", 0, 14));
         txtUsnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsnSearchActionPerformed(evt);
@@ -637,6 +621,20 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         studentTable.setRowHeight(20);
+
+//        studentTable.addMouseListener(new java.awt.event.MouseAdapter() {
+//            public void mouseClicked(java.awt.event.MouseEvent evt) {
+//                int selectedRow = studentTable.getSelectedRow(); // 선택된 행의 인덱스를 반환
+//
+//                if (selectedRow != -1) {
+//                    // 각 열의 값을 가져옴 (ID, Title, Author, Publisher, Category)
+//                    String memberId = studentTable.getValueAt(selectedRow, 0).toString();
+//
+//                    System.out.println("ID: " + memberId);
+//                }
+//            }
+//        });
+
         studentScrollPane.setViewportView(studentTable);
 
 //        studentTable.getColumnModel().getColumn(0).setMinWidth(50);
@@ -770,7 +768,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        // all issue books
+        // all issued books
 
         scrollPaneIssuedBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -1069,7 +1067,6 @@ public class MainFrame extends javax.swing.JFrame {
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // sidebar
-
         btnAddBook.setBackground(new java.awt.Color(153, 102, 255));
         btnAddBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAddBook.setForeground(new java.awt.Color(51, 51, 51));
@@ -1079,7 +1076,6 @@ public class MainFrame extends javax.swing.JFrame {
                 btnAddBookActionPerformed(evt);
             }
         });
-
         btnSearchBook.setBackground(new java.awt.Color(153, 102, 255));
         btnSearchBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSearchBook.setForeground(new java.awt.Color(51, 51, 51));
@@ -1089,7 +1085,6 @@ public class MainFrame extends javax.swing.JFrame {
                 btnSearchBookActionPerformed(evt);
             }
         });
-
         btnListBooks.setBackground(new java.awt.Color(153, 102, 255));
         btnListBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnListBooks.setForeground(new java.awt.Color(51, 51, 51));
@@ -1099,7 +1094,6 @@ public class MainFrame extends javax.swing.JFrame {
                 btnListBooksActionPerformed(evt);
             }
         });
-
         btnIssueBook.setBackground(new java.awt.Color(153, 102, 255));
         btnIssueBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnIssueBook.setForeground(new java.awt.Color(51, 51, 51));
@@ -1109,17 +1103,15 @@ public class MainFrame extends javax.swing.JFrame {
                 btnIssueBookActionPerformed(evt);
             }
         });
-
         btnListIssuedBooks.setBackground(new java.awt.Color(153, 102, 255));
         btnListIssuedBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnListIssuedBooks.setForeground(new java.awt.Color(51, 51, 51));
-        btnListIssuedBooks.setText("List Issued Books");
+        btnListIssuedBooks.setText("Return Book");
         btnListIssuedBooks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListIssuedBooksActionPerformed(evt);
             }
         });
-
         btnReturnToday.setBackground(new java.awt.Color(153, 102, 255));
         btnReturnToday.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnReturnToday.setForeground(new java.awt.Color(51, 51, 51));
@@ -1129,8 +1121,6 @@ public class MainFrame extends javax.swing.JFrame {
                 btnReturnTodayActionPerformed(evt);
             }
         });
-
-        // sidebar button "Sign Up'
         btnSignUp.setBackground(new java.awt.Color(153, 102, 255));
         btnSignUp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSignUp.setForeground(new java.awt.Color(51, 51, 51));
@@ -1140,7 +1130,6 @@ public class MainFrame extends javax.swing.JFrame {
                 btnSignUpActionPerformed(evt);
             }
         });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1189,7 +1178,6 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
         pack();
     }
 
@@ -1201,16 +1189,52 @@ public class MainFrame extends javax.swing.JFrame {
 
     // event handler functions
 
-    // add book
-
-    /**
-     * @brief event handler for sidebar button 'Add Book'
-     * @param evt
-     */
+    // sidebar
     private void btnAddBookActionPerformed(java.awt.event.ActionEvent evt) {
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "panelAddBook");
     }
+    private void btnSearchBookActionPerformed(java.awt.event.ActionEvent evt) {
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelSearchBook");
+    }
+    private void btnListBooksActionPerformed(java.awt.event.ActionEvent evt) {
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelListBooks");
+
+        bookAuthorTable.setModel(dao.getTableBooks());
+        if(bookAuthorTable.getModel().getRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(panelListBooks, "No record Found", "Nothing Found", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    private void btnIssueBookActionPerformed(java.awt.event.ActionEvent evt) {
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelIssueBook");
+    }
+    private void btnListIssuedBooksActionPerformed(java.awt.event.ActionEvent evt) {
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelIssuedBooks");
+        issuedBooksTable.setModel(dao.listIssuedBooks());
+//        if(issuedBooksTable.getModel().getRowCount() == 0)
+//        {
+//            JOptionPane.showMessageDialog(panelIssueBook, "No record Found", "No record", JOptionPane.ERROR_MESSAGE);
+//        }
+    }
+    private void btnReturnTodayActionPerformed(java.awt.event.ActionEvent evt) {
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelReturnToday");
+
+        Calendar cal = Calendar.getInstance();
+        Date curDate = cal.getTime();
+        returnTodayTable.setModel(dao.getBookToReturn(curDate));
+        if(returnTodayTable.getModel().getRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(panelReturnToday, "No book to return Today", "Message", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    // add book
 
     /**
      * @brief event handler for comboBoxCategory
@@ -1299,21 +1323,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     // list all books
 
-    /**
-     * @brief event handler for sidebar button 'List all Books'
-     * @param evt
-     */
-    private void btnListBooksActionPerformed(java.awt.event.ActionEvent evt) {
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "panelListBooks");
-
-        bookAuthorTable.setModel(dao.getTableBooks());
-        if(bookAuthorTable.getModel().getRowCount() == 0)
-        {
-            JOptionPane.showMessageDialog(panelListBooks, "No record Found", "Nothing Found", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
     // issue book
 
     /**
@@ -1338,13 +1347,13 @@ public class MainFrame extends javax.swing.JFrame {
             case    "Title":    bookTable.setModel(dao.getByTitle(txt));
                 break;
 
-            case "Category":    bookTable.setModel(dao.getByCategory(txt));
-                break;
-
             case   "Author":    bookTable.setModel(dao.getByAuthor(txt));
                 break;
 
-            case     "ISBN":    bookTable.setModel(dao.getByIsbn(txt));
+            case "Category":    bookTable.setModel(dao.getByCategory(txt));
+                break;
+
+            case     "ID":    bookTable.setModel(dao.getByIsbn(txt));
                 break;
         }
 
@@ -1353,6 +1362,73 @@ public class MainFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(panelIssueBook, "No record Found", "Nothing Found", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+
+    /**
+     * @brief event handler for member search button
+     * @param evt
+     */
+    private void btnSearchBookIssue1ActionPerformed(java.awt.event.ActionEvent evt) {
+        String usn = txtUsnSearch.getText().trim();
+
+        if(usn.length() != 0)
+        {
+            studentTable.setModel(dao.getStudentbyUsn(usn));
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(panelIssueBook, "Please enter member phone number", "Invalid Credentials", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if(studentTable.getModel().getRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(panelIssueBook, "No record Found", "Nothing Found", JOptionPane.ERROR_MESSAGE);
+            DialogAddStudent dialog = new DialogAddStudent(this, true);
+            dialog.setLocationRelativeTo(btnAddStudent);
+            dialog.setVisible(true);
+            txtUsnSearch.setText(dialog.usn);
+        }
+    }
+
+    /**
+     * @brief Issue book to a member
+     * @param evt Action event triggered when issuing a book
+     */
+    private void btnIssueActionPerformed(java.awt.event.ActionEvent evt) {
+        int selectedBookRow = bookTable.getSelectedRow();
+        int selectedStudentRow = studentTable.getSelectedRow();
+
+        // Check if both book and student are selected
+        if(selectedBookRow == -1 || selectedStudentRow == -1) {
+            JOptionPane.showMessageDialog(panelIssueBook, "Please select a book and member from the table", "Invalid Operation", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String memberId = studentTable.getValueAt(selectedStudentRow, 0).toString();
+        String bookId = bookTable.getValueAt(selectedBookRow, 0).toString();
+
+        // Call the DAO method to issue the book
+        if(dao.issueBook(new Issue(memberId, bookId))) {
+            JOptionPane.showMessageDialog(panelIssueBook, "Book Issued Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            // Refresh or update the book table after the issue action
+            // This could involve updating the table with the new data (e.g., reduce available quantity, etc.)
+            refreshBookTable();  // You would need to implement this method to reload or update the book data in the table
+        } else {
+            JOptionPane.showMessageDialog(panelIssueBook, "Book is already issued to someone else.", "Invalid Operation", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /**
+     * @brief Method to refresh or reload the book table
+     */
+    private void refreshBookTable() {
+        // You can fetch updated data and set it back to the table model
+        // Example: bookTable.setModel(new DefaultTableModel(updatedData, columnNames));
+        // Make sure to reload the data (e.g., book availability) after issuing the book
+    }
+
 
     // sign up
 
@@ -1475,104 +1551,12 @@ public class MainFrame extends javax.swing.JFrame {
         
     } //GEN-LAST:event_btnReturnActionPerformed
 
-    private void btnSearchBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchBookActionPerformed
-       CardLayout card = (CardLayout)mainPanel.getLayout();
-       card.show(mainPanel, "panelSearchBook");
-    } //GEN-LAST:event_btnSearchBookActionPerformed
-
-    private void btnIssueBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueBookActionPerformed
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-       card.show(mainPanel, "panelIssueBook");
-    } //GEN-LAST:event_btnIssueBookActionPerformed
-
-    private void btnListIssuedBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListIssuedBooksActionPerformed
-       CardLayout card = (CardLayout)mainPanel.getLayout();
-       card.show(mainPanel, "panelIssuedBooks");
-       issuedBooksTable.setModel(dao.listIssuedBooks());
-       if(issuedBooksTable.getModel().getRowCount() == 0)
-       {
-            JOptionPane.showMessageDialog(panelIssueBook, "No record Found", "No record", JOptionPane.ERROR_MESSAGE);
-       }
-    } //GEN-LAST:event_btnListIssuedBooksActionPerformed
-
-    private void btnReturnTodayActionPerformed(java.awt.event.ActionEvent evt) {
-       CardLayout card = (CardLayout)mainPanel.getLayout();
-       card.show(mainPanel, "panelReturnToday");
-       
-       Calendar cal = Calendar.getInstance();
-       Date curDate = cal.getTime();
-       returnTodayTable.setModel(dao.getBookToReturn(curDate));
-       if(returnTodayTable.getModel().getRowCount() == 0)
-       {
-           JOptionPane.showMessageDialog(panelReturnToday, "No book to return Today", "Message", JOptionPane.INFORMATION_MESSAGE);
-       }
-    }
-
-    private void btnSearchBookIssue1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchBookIssue1ActionPerformed
-        String usn = txtUsnSearch.getText().trim();
-         
-        if(usn.length() != 0)
-        {
-            studentTable.setModel(dao.getStudentbyUsn(usn));
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(panelIssueBook, "Please enter name or usn", "Invalid Credentials", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if(studentTable.getModel().getRowCount() == 0)
-        {
-            JOptionPane.showMessageDialog(panelIssueBook, "No record Found", "Nothing Found", JOptionPane.ERROR_MESSAGE);
-            DialogAddStudent dialog = new DialogAddStudent(this, true);
-            dialog.setLocationRelativeTo(btnAddStudent);
-            dialog.setVisible(true);
-            txtUsnSearch.setText(dialog.usn);
-        }
-        
-    } //GEN-LAST:event_btnSearchBookIssue1ActionPerformed
-
     private void btnAddStudentActionPerformed(java.awt.event.ActionEvent evt) {
         DialogAddStudent dialog = new DialogAddStudent(this, true);
         dialog.setLocationRelativeTo(btnAddStudent);
         dialog.setVisible(true);
         txtUsnSearch.setText(dialog.usn);
     }
-
-    private void btnIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueActionPerformed
-        int idxBook = bookTable.getSelectedRow();
-        int idxStudent = studentTable.getSelectedRow();
-	if(idxBook == -1 || idxStudent == -1)
-	{
-            JOptionPane.showMessageDialog(panelIssueBook, "Please select book and student from the table", "Invalid Operation", JOptionPane.ERROR_MESSAGE);
-            return;
-	}
-        String usn = (String)studentTable.getModel().getValueAt(idxStudent, 0);
-        String name = (String)studentTable.getModel().getValueAt(idxStudent, 1);
-        String isbn = (String)bookTable.getModel().getValueAt(idxBook, 0);
-        int count = Integer.parseInt((String)bookTable.getModel().getValueAt(idxBook, 3));
-        
-        if(count == 0)
-        {
-            JOptionPane.showMessageDialog(panelIssueBook, "Book not available", "Unavailable", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        Calendar cal = Calendar.getInstance();
-	Date curDate = cal.getTime();
-        Date issue_date = curDate;
-	cal.add(Calendar.DATE, 7); //add 7 days to current date
-	Date return_date = cal.getTime();
-        if( (dao.studentExist(new Student(usn, name)) || dao.addStudent(new Student(usn, name))) && dao.issueBook(new Issue(usn, issue_date, return_date, isbn)) )
-	{
-            JOptionPane.showMessageDialog(panelIssueBook, "Book Issued Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-            idxBook = -1;
-            bookTable.setModel(new DefaultTableModel());
-	}
-        else
-        {
-            JOptionPane.showMessageDialog(panelIssueBook, "Some error occured.", "Invalid Operation", JOptionPane.ERROR_MESSAGE);
-        }
-    } //GEN-LAST:event_btnIssueActionPerformed
 
     private void btnSearchByUsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchByUsnActionPerformed
         String usn = txtUsn.getText().trim();

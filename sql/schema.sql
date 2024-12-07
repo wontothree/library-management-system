@@ -18,3 +18,14 @@ CREATE TABLE members (
         is_vip BOOLEAN DEFAULT FALSE NOT NULL,
         is_withdrawn BOOLEAN DEFAULT FALSE NOT NULL
 );
+
+CREATE TABLE issues (
+        issue_id INT AUTO_INCREMENT PRIMARY KEY,
+        member_id VARCHAR(255) NOT NULL,
+        book_id VARCHAR(255) NOT NULL,
+        issue_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+        return_date DATE,
+        FOREIGN KEY (member_id) REFERENCES members(member_id),
+        FOREIGN KEY (book_id) REFERENCES books(book_id)
+);
+
