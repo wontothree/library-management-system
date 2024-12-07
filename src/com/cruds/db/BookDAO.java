@@ -66,8 +66,8 @@ public class BookDAO {
 
 		// Column names: Adjusted to match the SQL query results
 		Vector<String> colNames = new Vector<>();
-		colNames.add("Book ID");              // book_id
-		colNames.add("Book Title");           // book_title
+		colNames.add("ID");              // book_id
+		colNames.add("Title");           // book_title
 		colNames.add("Author");               // author_name
 		colNames.add("Publisher");            // publisher
 		colNames.add("Publication Date");     // publication_date
@@ -102,6 +102,188 @@ public class BookDAO {
 
 		// Create and return DefaultTableModel object
 		return new DefaultTableModel(data, colNames);
+	}
+
+	/**
+	 * @brief Search books by title
+	 * @param title The title to search for
+	 * @return A DefaultTableModel containing the search results
+	 */
+	public DefaultTableModel getByTitle(String title) {
+		// SQL query: Ensure it matches the intended data and uses the title parameter
+		String sql = "SELECT book_id, book_title, author_name, publisher, category " +
+				"FROM books " +
+				"WHERE LOWER(book_title) LIKE ?";
+
+		// Column names for the table model
+		Vector<String> colNames = new Vector<>();
+		colNames.add("ID");
+		colNames.add("Title");
+		colNames.add("Author");
+		colNames.add("Publisher");
+		colNames.add("Category");
+
+		// Data to hold the rows
+		Vector<Vector<String>> data = new Vector<>();
+
+		try (Connection conn = DBConnectionManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + title.toLowerCase() + "%");
+
+			ResultSet rs = ps.executeQuery();
+			while (rs != null && rs.next()) {
+				Vector<String> row = new Vector<>();
+				row.add(rs.getString("book_id"));             // Book ID
+				row.add(rs.getString("book_title"));          // Book Title
+				row.add(rs.getString("author"));              // Author
+				row.add(rs.getString("publisher"));           // Publisher
+				row.add(rs.getString("publication_date"));    // Publication Date
+				row.add(rs.getString("category"));            // Category
+				data.add(row);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return new DefaultTableModel(data, colNames);
+	}
+
+
+	public DefaultTableModel getByCategory(String category)
+	{
+		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where a.book_isbn = b.book_isbn and LOWER(b.category) like ?";
+		Vector<String> colNames = new Vector<>();
+		colNames.add("Book ISBN");
+		colNames.add("Book Title");
+		colNames.add("Category");
+		colNames.add("Quantity");
+		colNames.add("Author");
+
+		Vector<Vector<String>> data = new Vector<>();
+
+		try(Connection conn = DBConnectionManager.getConnection())
+		{
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + category.toLowerCase() + "%");
+			ResultSet rs = ps.executeQuery();
+
+			while(rs != null && rs.next())
+			{
+				Vector<String> row = new Vector<>();
+				row.add(rs.getString(1));
+				row.add(rs.getString(2));
+				row.add(rs.getString(3));
+				row.add(String.valueOf(rs.getInt(4)));
+				row.add(rs.getString(5));
+				data.add(row);
+			}
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return new DefaultTableModel(data, colNames);
+	}
+
+	public DefaultTableModel getByAuthor(String name)
+	{
+		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where b.book_isbn = a.book_isbn and LOWER(a.author_name) like ?";
+		Book b = null;
+		Vector<String> colNames = new Vector<>();
+		colNames.add("Book ISBN");
+		colNames.add("Book Title");
+		colNames.add("Category");
+		colNames.add("Quantity");
+		colNames.add("Author");
+
+		Vector<Vector<String>> data = new Vector<>();
+
+		try(Connection conn = DBConnectionManager.getConnection())
+		{
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + name.toLowerCase() + "%");
+			ResultSet rs = ps.executeQuery();
+
+			while(rs != null && rs.next())
+			{
+				Vector<String> row = new Vector<>();
+				row.add(rs.getString(1));
+				row.add(rs.getString(2));
+				row.add(rs.getString(3));
+				row.add(String.valueOf(rs.getInt(4)));
+				row.add(rs.getString(5));
+				data.add(row);
+			}
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return new DefaultTableModel(data, colNames);
+	}
+
+	public DefaultTableModel getByIsbn(String isbn)
+	{
+		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where a.book_isbn = b.book_isbn and LOWER(b.book_isbn) = ?";
+		Vector<String> colNames = new Vector<>();
+		colNames.add("Book ISBN");
+		colNames.add("Book Title");
+		colNames.add("Category");
+		colNames.add("Quantity");
+		colNames.add("Author");
+
+		Vector<Vector<String>> data = new Vector<>();
+
+		try(Connection conn = DBConnectionManager.getConnection())
+		{
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, isbn.toLowerCase());
+			ResultSet rs = ps.executeQuery();
+
+			while(rs != null && rs.next())
+			{
+				Vector<String> row = new Vector<>();
+				row.add(rs.getString(1));
+				row.add(rs.getString(2));
+				row.add(rs.getString(3));
+				row.add(String.valueOf(rs.getInt(4)));
+				row.add(rs.getString(5));
+				data.add(row);
+			}
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return new DefaultTableModel(data, colNames);
+	}
+
+	public boolean issueBook(Issue bi)
+	{
+		String sql = "insert into book_issue(issue_id, usn, issue_date, return_date, book_isbn) values(?, ?, ?, ?, ?)";
+		String sqlCount = "update book set no_of_books = no_of_books - 1 where book_isbn = ?";
+		int rows = 0;
+		int rowsCount = 0;
+		java.sql.Date idate = new java.sql.Date(bi.getIssueDate().getTime());
+		java.sql.Date rdate = new java.sql.Date(bi.getReturnDate().getTime());
+
+		try(Connection conn = DBConnectionManager.getConnection())
+		{
+			PreparedStatement psCount = conn.prepareStatement(sqlCount);
+			psCount.setString(1, bi.getBook_isbn());
+			rowsCount = psCount.executeUpdate();
+
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, bi.getId());
+			ps.setString(2, bi.getUsn());
+			ps.setDate(3, idate);
+			ps.setDate(4, rdate);
+			ps.setString(5, bi.getBook_isbn());
+			rows = ps.executeUpdate();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rows > 0 && rowsCount > 0;
 	}
 
 	/**
@@ -253,177 +435,6 @@ public class BookDAO {
 			e.printStackTrace();
 		} 
 		return new DefaultTableModel(data, colNames);
-	}
-	
-	public DefaultTableModel getByTitle(String title)
-	{
-		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where a.book_isbn = b.book_isbn and LOWER(b.book_title) like ? ";
-		Vector<String> colNames = new Vector<>();
-		colNames.add("Book ISBN");
-		colNames.add("Book Title");
-                colNames.add("Category");
-                colNames.add("Quantity");
-                colNames.add("Author");
-                
-                Vector<Vector<String>> data = new Vector<>();
-		
-		try(Connection conn = DBConnectionManager.getConnection())
-		{
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, "%" + title.toLowerCase() + "%");
-			
-			ResultSet rs = ps.executeQuery();
-			while(rs != null && rs.next())
-			{
-				Vector<String> row = new Vector<>();
-				row.add(rs.getString(1));
-				row.add(rs.getString(2));
-                                row.add(rs.getString(3));
-                                row.add(String.valueOf(rs.getInt(4)));
-                                row.add(rs.getString(5));
-				data.add(row);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} 
-		return new DefaultTableModel(data, colNames);
-	}
-	
-	public DefaultTableModel getByCategory(String category)
-	{
-		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where a.book_isbn = b.book_isbn and LOWER(b.category) like ?";
-                Vector<String> colNames = new Vector<>();
-		colNames.add("Book ISBN");
-		colNames.add("Book Title");
-                colNames.add("Category");
-                colNames.add("Quantity");
-                colNames.add("Author");
-		
-		Vector<Vector<String>> data = new Vector<>();
-		
-		try(Connection conn = DBConnectionManager.getConnection())
-		{
-			PreparedStatement ps = conn.prepareStatement(sql);
-                        ps.setString(1, "%" + category.toLowerCase() + "%");
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs != null && rs.next())
-			{
-				Vector<String> row = new Vector<>();
-				row.add(rs.getString(1));
-				row.add(rs.getString(2));
-                                row.add(rs.getString(3));
-                                row.add(String.valueOf(rs.getInt(4)));
-                                row.add(rs.getString(5));
-				data.add(row);
-			}
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return new DefaultTableModel(data, colNames);
-	}
-	
-	public DefaultTableModel getByAuthor(String name)
-	{
-		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where b.book_isbn = a.book_isbn and LOWER(a.author_name) like ?";
-		Book b = null;
-                Vector<String> colNames = new Vector<>();
-		colNames.add("Book ISBN");
-		colNames.add("Book Title");
-                colNames.add("Category");
-                colNames.add("Quantity");
-                colNames.add("Author");
-		
-		Vector<Vector<String>> data = new Vector<>();
-		
-		try(Connection conn = DBConnectionManager.getConnection())
-		{
-			PreparedStatement ps = conn.prepareStatement(sql);
-                        ps.setString(1, "%" + name.toLowerCase() + "%");
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs != null && rs.next())
-			{
-				Vector<String> row = new Vector<>();
-				row.add(rs.getString(1));
-				row.add(rs.getString(2));
-                                row.add(rs.getString(3));
-                                row.add(String.valueOf(rs.getInt(4)));
-                                row.add(rs.getString(5));
-				data.add(row);
-			}
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return new DefaultTableModel(data, colNames);
-	}
-        
-        public DefaultTableModel getByIsbn(String isbn)
-	{
-		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where a.book_isbn = b.book_isbn and LOWER(b.book_isbn) = ?";
-                Vector<String> colNames = new Vector<>();
-		colNames.add("Book ISBN");
-		colNames.add("Book Title");
-                colNames.add("Category");
-                colNames.add("Quantity");
-                colNames.add("Author");
-		
-		Vector<Vector<String>> data = new Vector<>();
-		
-		try(Connection conn = DBConnectionManager.getConnection())
-		{
-			PreparedStatement ps = conn.prepareStatement(sql);
-                        ps.setString(1, isbn.toLowerCase());
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs != null && rs.next())
-			{
-				Vector<String> row = new Vector<>();
-				row.add(rs.getString(1));
-				row.add(rs.getString(2));
-                                row.add(rs.getString(3));
-                                row.add(String.valueOf(rs.getInt(4)));
-                                row.add(rs.getString(5));
-				data.add(row);
-			}
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return new DefaultTableModel(data, colNames);
-	}
-
-	public boolean issueBook(Issue bi)
-	{
-		String sql = "insert into book_issue(issue_id, usn, issue_date, return_date, book_isbn) values(?, ?, ?, ?, ?)";
-                String sqlCount = "update book set no_of_books = no_of_books - 1 where book_isbn = ?";
-		int rows = 0;
-                int rowsCount = 0;
-		java.sql.Date idate = new java.sql.Date(bi.getIssueDate().getTime());
-		java.sql.Date rdate = new java.sql.Date(bi.getReturnDate().getTime());
-		
-		try(Connection conn = DBConnectionManager.getConnection())
-		{
-			PreparedStatement psCount = conn.prepareStatement(sqlCount);
-                        psCount.setString(1, bi.getBook_isbn());
-                        rowsCount = psCount.executeUpdate();
-                        
-                        PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, bi.getId());
-			ps.setString(2, bi.getUsn());
-			ps.setDate(3, idate);
-			ps.setDate(4, rdate);
-			ps.setString(5, bi.getBook_isbn());
-			rows = ps.executeUpdate();
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return rows > 0 && rowsCount > 0;
 	}
 	
 	public DefaultTableModel listBookByUsn(String usn)

@@ -129,8 +129,8 @@ erDiagram
     %% table books
     books {
         string book_id PK
-        string book_name
-        string author
+        string book_title
+        string author_name
         string publisher
         date publication_date
         date purchase_date
@@ -138,12 +138,12 @@ erDiagram
         bool is_domestic
     }
 
-    %% 대출 테이블을 정의합니다.
-    loan {
-        int loan_id PK
+    %% issues table
+     issues {
+        int issue_id PK
         int member_id FK
         int book_id FK
-        date loan_date
+        date issue_date
         date return_date
     }
 
@@ -152,8 +152,8 @@ erDiagram
     groups ||--o{ member_group : "includes"
     members ||--o{ member_club : "joins"
     clubs ||--o{ member_club : "includes"
-    members ||--o{ loan : "borrows"
-    books ||--o{ loan : "is loaned"
+    members ||--o{ issues : "issues"
+    books ||--o{ issues : "is issued"
 ```
 
 # Getting Started
@@ -179,7 +179,3 @@ javac -d . com/cruds/db/*.java com/cruds/model/*.java com/cruds/gui/MainFrame.ja
 # start
 java -cp . com.cruds.gui.MainFrame
 ```
-
-# Frondend
-
-- Signup

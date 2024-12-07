@@ -491,9 +491,9 @@ public class MainFrame extends javax.swing.JFrame {
         bookAuthorTable.getColumnModel().getColumn(6).setPreferredWidth(80);
         bookAuthorTable.getColumnModel().getColumn(6).setMaxWidth(100);
 
-        bookAuthorTable.getColumnModel().getColumn(7).setMinWidth(80);
-        bookAuthorTable.getColumnModel().getColumn(7).setPreferredWidth(80);
-        bookAuthorTable.getColumnModel().getColumn(7).setMaxWidth(100);
+        bookAuthorTable.getColumnModel().getColumn(7).setMinWidth(50);
+        bookAuthorTable.getColumnModel().getColumn(7).setPreferredWidth(50);
+        bookAuthorTable.getColumnModel().getColumn(7).setMaxWidth(50);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel1.setForeground(new java.awt.Color(204, 0, 204));
@@ -556,7 +556,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Title", "Author", "Publisher", "Publication Date", "Purchase Date", "Category", "Domestic/Foregin"
+                "ID", "Title", "Author", "Publisher", "Category",
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1314,6 +1314,46 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
 
+    // issue book
+
+    /**
+     * @brief event handler for book search button
+     * @param evt
+     */
+    private void btnSearchBookIssueActionPerformed(java.awt.event.ActionEvent evt) {
+        if(searchBookBy == null)
+        {
+            searchBookBy = "Title"; //search by title default
+        }
+
+        String txt = txtSearchBook.getText().trim();
+        if(txt.length() == 0)
+        {
+            JOptionPane.showMessageDialog(panelSearchBook, "Please fill in the details", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        switch(searchBookBy)
+        {
+            case    "Title":    bookTable.setModel(dao.getByTitle(txt));
+                break;
+
+            case "Category":    bookTable.setModel(dao.getByCategory(txt));
+                break;
+
+            case   "Author":    bookTable.setModel(dao.getByAuthor(txt));
+                break;
+
+            case     "ISBN":    bookTable.setModel(dao.getByIsbn(txt));
+                break;
+        }
+
+        if(bookTable.getModel().getRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(panelIssueBook, "No record Found", "Nothing Found", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     // sign up
 
     /**
@@ -1407,40 +1447,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void ComboBoxSearchBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxSearchBookActionPerformed
         searchBookBy = (String)ComboBoxSearchBook.getSelectedItem();
     } //GEN-LAST:event_ComboBoxSearchBookActionPerformed
-
-    private void btnSearchBookIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchBookIssueActionPerformed
-        if(searchBookBy == null)
-        {
-            searchBookBy = "Title"; //search by title default
-        }
-        
-        String txt = txtSearchBook.getText().trim();
-        if(txt.length() == 0)
-        {
-            JOptionPane.showMessageDialog(panelSearchBook, "Please fill in the details", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-                
-        switch(searchBookBy)
-        {
-            case    "Title":    bookTable.setModel(dao.getByTitle(txt));
-                                break;
-                          
-            case "Category":    bookTable.setModel(dao.getByCategory(txt));
-                                break;
-             
-            case   "Author":    bookTable.setModel(dao.getByAuthor(txt));
-                                break;
-                          
-            case     "ISBN":    bookTable.setModel(dao.getByIsbn(txt));
-                                break;              
-        }
-        
-        if(bookTable.getModel().getRowCount() == 0)
-        {
-            JOptionPane.showMessageDialog(panelIssueBook, "No record Found", "Nothing Found", JOptionPane.ERROR_MESSAGE);
-        }
-    } //GEN-LAST:event_btnSearchBookIssueActionPerformed
 
     private void txtUsnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsnSearchActionPerformed
         // TODO add your handling code here:
