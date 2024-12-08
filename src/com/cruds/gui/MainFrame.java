@@ -768,7 +768,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        // all issued books
+        // Return book
 
         scrollPaneIssuedBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -778,11 +778,11 @@ public class MainFrame extends javax.swing.JFrame {
 
                 },
                 new String [] {
-                        "Issue ID", "Book Title", "USN", "Student Name", "Issue Date", "Return Date", "Book ISBN"
+                        "Member Name", "Book ID", "Book Title", "Issue Date", "Return Date", "Overdue Fee"
                 }
         ) {
             boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false, false, false
+                    false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -807,7 +807,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         labelUsn2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelUsn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelUsn2.setText("USN");
+        labelUsn2.setText("Member ID");
 
         txtUsn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -835,9 +835,9 @@ public class MainFrame extends javax.swing.JFrame {
                                                 .addGroup(panelIssuedBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(scrollPaneIssuedBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGroup(panelIssuedBooksLayout.createSequentialGroup()
-                                                                .addComponent(labelUsn2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(labelUsn2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(txtUsn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(txtUsn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(btnSearchByUsn))))
                                         .addGroup(panelIssuedBooksLayout.createSequentialGroup()
@@ -1429,6 +1429,21 @@ public class MainFrame extends javax.swing.JFrame {
         // Make sure to reload the data (e.g., book availability) after issuing the book
     }
 
+    // return book
+
+    private void btnSearchByUsnActionPerformed(java.awt.event.ActionEvent evt) {
+        String usn = txtUsn.getText().trim();
+        if(usn.length() == 0)
+        {
+            JOptionPane.showMessageDialog(panelIssueBook, "Please enter Member ID", "Invalid Member ID", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        issuedBooksTable.setModel(dao.listBookByUsn(usn));
+        if(issuedBooksTable.getModel().getRowCount() == 0)
+        {
+            JOptionPane.showMessageDialog(panelIssueBook, "No record Found", "No record", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     // sign up
 
@@ -1557,20 +1572,6 @@ public class MainFrame extends javax.swing.JFrame {
         dialog.setVisible(true);
         txtUsnSearch.setText(dialog.usn);
     }
-
-    private void btnSearchByUsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchByUsnActionPerformed
-        String usn = txtUsn.getText().trim();
-        if(usn.length() == 0)
-        {
-            JOptionPane.showMessageDialog(panelIssueBook, "Please enter usn", "Invalid USN", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        issuedBooksTable.setModel(dao.listBookByUsn(usn));
-        if(issuedBooksTable.getModel().getRowCount() == 0)
-        {
-            JOptionPane.showMessageDialog(panelIssueBook, "No record Found", "No record", JOptionPane.ERROR_MESSAGE);
-        }
-    } //GEN-LAST:event_btnSearchByUsnActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
