@@ -5,6 +5,8 @@ import com.cruds.db.BookDAO;
 import com.cruds.model.Book;
 import com.cruds.model.Member;
 import com.cruds.model.Issue;
+import com.cruds.model.Group;
+import com.cruds.model.Club;
 
 //import com.cruds.model.Author;
 //import com.cruds.model.Student;
@@ -31,13 +33,15 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        // sidebar button
+        // [sidebar] button
         btnAddBook = new javax.swing.JButton();
         btnSearchBook = new javax.swing.JButton();
         btnListBooks = new javax.swing.JButton();
         btnIssueBook = new javax.swing.JButton();
         btnListIssuedBooks = new javax.swing.JButton();
         btnReturnToday = new javax.swing.JButton();
+        btnJoinGroupClub = new javax.swing.JButton();
+        btnReserveRoom = new javax.swing.JButton();
         btnSignUp = new javax.swing.JButton();
 
         // panel
@@ -45,6 +49,8 @@ public class MainFrame extends javax.swing.JFrame {
         panelAddBook = new javax.swing.JPanel();
         panelSearchBook = new javax.swing.JPanel();
         panelIssuedBooks = new javax.swing.JPanel();
+        panelJoinGroupClub = new javax.swing.JPanel();
+        panelReserveRoom = new javax.swing.JPanel();
         panelSignUp = new javax.swing.JPanel();
 
         // [Page] Add Book
@@ -86,6 +92,31 @@ public class MainFrame extends javax.swing.JFrame {
         btnAddAccount = new javax.swing.JButton();
         btnWithdrawal = new javax.swing.JButton();
         btnMonthEndSettlement = new javax.swing.JButton();
+
+        // [page] join group / club
+        joinGroupLabel = new javax.swing.JLabel();
+        joinclubLabel = new javax.swing.JLabel();
+        groupIdLabel = new javax.swing.JLabel();
+        groupMemberIdLabel = new javax.swing.JLabel();
+        groupMemberAgeLabel = new javax.swing.JLabel();
+        clubIdLabel = new javax.swing.JLabel();
+        clubNameLabel = new javax.swing.JLabel();
+        clubRepresentativeNameLabel = new javax.swing.JLabel();
+        clubHeadCountLabel = new javax.swing.JLabel();
+        clubAverageAgeLabel = new javax.swing.JLabel();
+        txtGroupId = new javax.swing.JTextField();
+        txtGroupMemberId = new javax.swing.JTextField();
+        txtGroupMemberAge = new javax.swing.JTextField();
+        txtClubId = new javax.swing.JTextField();
+        txtClubName = new javax.swing.JTextField();
+        txtClubRepresentativeName = new javax.swing.JTextField();
+        txtClubHeadCount = new javax.swing.JTextField();
+        txtClubAverageAge = new javax.swing.JTextField();
+        btnJoinGroup = new javax.swing.JButton();
+        btnJoinClub = new javax.swing.JButton();
+
+        // [page] reserve room
+        reserveRoomLabel = new javax.swing.JLabel();
 
         comboBoxSearchBy = new javax.swing.JComboBox<>();
         txtSearch = new javax.swing.JTextField();
@@ -131,7 +162,7 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Library Management System");
 
-        // list all books
+        // list new books
 
         bookAuthorTable = new javax.swing.JTable();
         
@@ -438,7 +469,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        // [page] list all books
+        // [page] list new books
 
         scrollPaneBookAuthor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -482,26 +513,26 @@ public class MainFrame extends javax.swing.JFrame {
         bookAuthorTable.getColumnModel().getColumn(3).setPreferredWidth(50);
         bookAuthorTable.getColumnModel().getColumn(3).setMaxWidth(50);
 
-        bookAuthorTable.getColumnModel().getColumn(4).setMinWidth(100);
-        bookAuthorTable.getColumnModel().getColumn(4).setPreferredWidth(100);
+        bookAuthorTable.getColumnModel().getColumn(4).setMinWidth(150);
+        bookAuthorTable.getColumnModel().getColumn(4).setPreferredWidth(150);
         bookAuthorTable.getColumnModel().getColumn(4).setMaxWidth(150);
 
-        bookAuthorTable.getColumnModel().getColumn(5).setMinWidth(100);
-        bookAuthorTable.getColumnModel().getColumn(5).setPreferredWidth(100);
+        bookAuthorTable.getColumnModel().getColumn(5).setMinWidth(150);
+        bookAuthorTable.getColumnModel().getColumn(5).setPreferredWidth(150);
         bookAuthorTable.getColumnModel().getColumn(5).setMaxWidth(150);
 
         bookAuthorTable.getColumnModel().getColumn(6).setMinWidth(80);
         bookAuthorTable.getColumnModel().getColumn(6).setPreferredWidth(80);
         bookAuthorTable.getColumnModel().getColumn(6).setMaxWidth(100);
 
-        bookAuthorTable.getColumnModel().getColumn(7).setMinWidth(50);
-        bookAuthorTable.getColumnModel().getColumn(7).setPreferredWidth(50);
-        bookAuthorTable.getColumnModel().getColumn(7).setMaxWidth(50);
+        bookAuthorTable.getColumnModel().getColumn(7).setMinWidth(30);
+        bookAuthorTable.getColumnModel().getColumn(7).setPreferredWidth(30);
+        bookAuthorTable.getColumnModel().getColumn(7).setMaxWidth(30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel1.setForeground(new java.awt.Color(204, 0, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("List of Books");
+        jLabel1.setText("List of New Books");
 
         javax.swing.GroupLayout panelListBooksLayout = new javax.swing.GroupLayout(panelListBooks);
         panelListBooks.setLayout(panelListBooksLayout);
@@ -1059,9 +1090,413 @@ public class MainFrame extends javax.swing.JFrame {
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+        // [page] join group / club
+
+        // label
+        joinGroupLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        joinGroupLabel.setForeground(new java.awt.Color(219, 68, 85));
+        joinGroupLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        joinGroupLabel.setText("Join Group");
+
+        // group id
+        groupIdLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        groupIdLabel.setText("Group ID");
+        txtGroupId.setFont(new java.awt.Font("Tahoma", 0, 14));
+
+        // member id
+        groupMemberIdLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        groupMemberIdLabel.setText("Member ID");
+        txtGroupMemberId.setFont(new java.awt.Font("Tahoma", 0, 14));
+
+        // member age
+        groupMemberAgeLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        groupMemberAgeLabel.setText("Member Age");
+        txtGroupMemberAge.setFont(new java.awt.Font("Tahoma", 0, 14));
+
+        // [button] join group
+        btnJoinGroup.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnJoinGroup.setText("Join Group");
+        btnJoinGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJoinGroupActionPerformed(evt);
+            }
+        });
+
+        // label
+        joinclubLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        joinclubLabel.setForeground(new java.awt.Color(219, 68, 85));
+        joinclubLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        joinclubLabel.setText("Join Club");
+
+        // club id
+        clubIdLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        clubIdLabel.setText("Club ID");
+        txtClubId.setFont(new java.awt.Font("Tahoma", 0, 14));
+
+        // club name
+        clubNameLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        clubNameLabel.setText("Club Name");
+        txtClubName.setFont(new java.awt.Font("Tahoma", 0, 14));
+
+        // club representative name
+        clubRepresentativeNameLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        clubRepresentativeNameLabel.setText("Representative Name");
+        txtClubRepresentativeName.setFont(new java.awt.Font("Tahoma", 0, 14));
+
+        // club average age
+        clubAverageAgeLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        clubAverageAgeLabel.setText("Average Age");
+        txtClubAverageAge.setFont(new java.awt.Font("Tahoma", 0, 14));
+
+        // club head count
+        clubHeadCountLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        clubHeadCountLabel.setText("Head Count");
+        txtClubHeadCount.setFont(new java.awt.Font("Tahoma", 0, 14));
+
+        // [button] join club
+        btnJoinClub.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnJoinClub.setText("Join Club");
+        btnJoinClub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJoinClubActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelJoinGroupClubLayout = new javax.swing.GroupLayout(panelJoinGroupClub);
+        panelJoinGroupClub.setLayout(panelJoinGroupClubLayout);
+
+        // Define Horizontal Group
+        panelJoinGroupClubLayout.setHorizontalGroup(
+                panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelJoinGroupClubLayout.createSequentialGroup()
+                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panelJoinGroupClubLayout.createSequentialGroup()
+
+                                                .addGap(100, 100, 100)
+                                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addComponent(groupIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(groupMemberIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(groupMemberAgeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
+                                                                .addComponent(clubIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(clubNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(clubRepresentativeNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(clubAverageAgeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(clubHeadCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                                                                .addComponent(withdrawalIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        )
+                                                )
+
+                                                .addGap(18, 18, 18)
+                                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(txtGroupId, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                                        .addComponent(txtGroupMemberId, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                                        .addComponent(txtGroupMemberAge, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+
+                                                        .addComponent(txtClubId, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                                        .addComponent(txtClubName, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                                        .addComponent(txtClubRepresentativeName, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                                        .addComponent(txtClubAverageAge, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                                        .addComponent(txtClubHeadCount, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+//
+//                                                        .addComponent(txtWithdrawalID, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                                )
+                                        )
+
+                                        .addGroup(panelJoinGroupClubLayout.createSequentialGroup()
+                                                .addGap(279, 279, 279)
+                                                .addComponent(btnJoinGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panelJoinGroupClubLayout.createSequentialGroup()
+                                                .addGap(279, 279, 279)
+                                                .addComponent(btnJoinClub, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panelJoinGroupClubLayout.createSequentialGroup()
+                                                .addGap(265, 265, 265)
+                                                .addComponent(joinGroupLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panelJoinGroupClubLayout.createSequentialGroup()
+                                                .addGap(265, 265, 265)
+                                                .addComponent(joinclubLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                )
+                                .addContainerGap(474, Short.MAX_VALUE))
+        );
+
+        // Define Vertical Group
+        panelJoinGroupClubLayout.setVerticalGroup(
+                panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelJoinGroupClubLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(joinGroupLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+
+                                // group id
+                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtGroupId)
+                                        .addComponent(groupIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+
+                                // member id
+                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtGroupMemberId)
+                                        .addComponent(groupMemberIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+
+                                // member age
+                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtGroupMemberAge)
+                                        .addComponent(groupMemberAgeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+
+                                // [button] join group
+                                .addComponent(btnJoinGroup)
+                                .addGap(50, 50, 50)
+
+                                // [label]
+                                .addComponent(joinclubLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+
+                                // club id
+                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtClubId)
+                                        .addComponent(clubIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+
+                                // club name
+                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtClubName)
+                                        .addComponent(clubNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+
+                                // club representative name
+                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtClubRepresentativeName)
+                                        .addComponent(clubRepresentativeNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+
+                                // club average age
+                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtClubAverageAge)
+                                        .addComponent(clubAverageAgeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+
+                                // club head count
+                                .addGroup(panelJoinGroupClubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtClubHeadCount)
+                                        .addComponent(clubHeadCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+
+                                // [button] join club
+                                .addComponent(btnJoinClub)
+                                .addGap(50, 50, 50)
+                        )
+        );
+
+        mainPanel.add(panelJoinGroupClub, "panelJoinGroupClub");
+        panelJoinGroupClub.getAccessibleContext().setAccessibleName("");
+        panelJoinGroupClub.getAccessibleContext().setAccessibleDescription("");
+
+        btnLogout.setBackground(new java.awt.Color(204, 204, 204));
+        btnLogout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // [page] reserve room
+        reserveRoomLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        reserveRoomLabel.setForeground(new java.awt.Color(219, 68, 85));
+        reserveRoomLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        reserveRoomLabel.setText("Reserve Room");
+
+//
+//        // member id
+//        memberIdLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+//        memberIdLabel.setText("Member ID");
+//        txtMemberId.setFont(new java.awt.Font("Tahoma", 0, 14));
+//
+//        // full name
+//        fullNameLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+//        fullNameLabel.setText("Full Name");
+//        txtFullName.setFont(new java.awt.Font("Tahoma", 0, 14));
+//
+//        // phone number
+//        phoneNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+//        phoneNumberLabel.setText("Phone Number");
+//        txtPhoneNumber.setFont(new java.awt.Font("Tahoma", 0, 14));
+//
+//        // street address
+//        streetAddressLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+//        streetAddressLabel.setText("Street Address");
+//        txtStreetAddress.setFont(new java.awt.Font("Tahoma", 0, 14));
+//
+//        // email address
+//        emailAddressLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+//        emailAddressLabel.setText("Email Address");
+//        txtEmailAddress.setFont(new java.awt.Font("Tahoma", 0, 14));
+//
+//        // [button] create
+//        btnAddAccount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+//        btnAddAccount.setText("Create");
+//        btnAddAccount.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                btnCreateActionPerformed(evt);
+//            }
+//        });
+//
+//        // member id
+//        withdrawalIDLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+//        withdrawalIDLabel.setText("Member ID");
+//        txtWithdrawalID.setFont(new java.awt.Font("Tahoma", 0, 14));
+//
+//        // [button] withdrawal
+//        btnWithdrawal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+//        btnWithdrawal.setText("Withdrawal");
+//        btnWithdrawal.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                btnWithdrawalActionPerformed(evt);
+//            }
+//        });
+//
+//        // [button] month end settlement
+//        btnMonthEndSettlement.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+//        btnMonthEndSettlement.setText("Month End Settlement");
+//        btnMonthEndSettlement.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                btnMonthEndSettlementActionPerformed(evt);
+//            }
+//        });
+
+        javax.swing.GroupLayout panelReserveRoomLayout = new javax.swing.GroupLayout(panelReserveRoom);
+        panelReserveRoom.setLayout(panelReserveRoomLayout);
+
+        // Define Horizontal Group
+        panelReserveRoomLayout.setHorizontalGroup(
+                panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelReserveRoomLayout.createSequentialGroup()
+                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(panelReserveRoomLayout.createSequentialGroup()
+
+                                                                .addGap(100, 100, 100)
+                                                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                                                                .addComponent(memberIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                                                                .addComponent(fullNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                                                                .addComponent(phoneNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                                                                .addComponent(streetAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                                                                .addComponent(emailAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
+//                                                                .addComponent(withdrawalIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                )
+                                                                )
+
+                                                                .addGap(18, 18, 18)
+                                                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                                                        .addComponent(txtMemberId, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+//                                                        .addComponent(txtFullName, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+//                                                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+//                                                        .addComponent(txtStreetAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+//                                                        .addComponent(txtEmailAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+//
+//                                                        .addComponent(txtWithdrawalID, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                                                )
+                                                )
+
+//                                        .addGroup(panelReserveRoomLayout.createSequentialGroup()
+//                                                .addGap(279, 279, 279)
+//                                                .addComponent(btnAddAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                                        .addGroup(panelReserveRoomLayout.createSequentialGroup()
+//                                                .addGap(279, 279, 279)
+//                                                .addComponent(btnWithdrawal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                                        .addGroup(panelReserveRoomLayout.createSequentialGroup()
+//                                                .addGap(279, 279, 279)
+//                                                .addComponent(btnMonthEndSettlement, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(panelReserveRoomLayout.createSequentialGroup()
+                                                        .addGap(265, 265, 265)
+                                                        .addComponent(reserveRoomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                )
+                                .addContainerGap(474, Short.MAX_VALUE))
+        );
+
+        // Define Vertical Group
+        panelReserveRoomLayout.setVerticalGroup(
+                panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelReserveRoomLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(reserveRoomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37)
+//
+//                                // book title
+//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                                        .addComponent(txtMemberId)
+//                                        .addComponent(memberIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//                                .addGap(25, 25, 25)
+//
+//                                // full Name
+//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                                        .addComponent(txtFullName)
+//                                        .addComponent(fullNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//                                .addGap(25, 25, 25)
+//
+//                                // phone Number
+//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                                        .addComponent(txtPhoneNumber)
+//                                        .addComponent(phoneNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//                                .addGap(25, 25, 25)
+//
+//                                // street address
+//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                                        .addComponent(txtStreetAddress)
+//                                        .addComponent(streetAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//                                .addGap(25, 25, 25)
+//
+//                                // email address
+//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                                        .addComponent(txtEmailAddress)
+//                                        .addComponent(emailAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//                                .addGap(25, 25, 25)
+//
+//                                // [button] create
+//                                .addComponent(btnAddAccount)
+//                                .addGap(50, 50, 50)
+
+//
+//                                // member id
+//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+//                                        .addComponent(txtWithdrawalID)
+//                                        .addComponent(withdrawalIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//                                .addGap(25, 25, 25)
+//
+//                                // [button] withdrawal
+//                                .addComponent(btnWithdrawal)
+//                                .addGap(50, 50, 50)
+//
+//                                // [button] withdrawal
+//                                .addComponent(btnMonthEndSettlement)
+//                                .addGap(50, 50, 50)
+                        )
+        );
+
+        mainPanel.add(panelReserveRoom, "panelReserveRoom");
+        panelReserveRoom.getAccessibleContext().setAccessibleName("");
+        panelReserveRoom.getAccessibleContext().setAccessibleDescription("");
+
+        btnLogout.setBackground(new java.awt.Color(204, 204, 204));
+        btnLogout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         // [sidebar]
 
-        // add book
+        // [sidebar] add book
         btnAddBook.setBackground(new java.awt.Color(153, 102, 255));
         btnAddBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAddBook.setForeground(new java.awt.Color(51, 51, 51));
@@ -1072,7 +1507,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // search book
+        // [sidebar] search book
         btnSearchBook.setBackground(new java.awt.Color(153, 102, 255));
         btnSearchBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSearchBook.setForeground(new java.awt.Color(51, 51, 51));
@@ -1083,18 +1518,18 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // list all books
+        // [sidebar] list new books
         btnListBooks.setBackground(new java.awt.Color(153, 102, 255));
         btnListBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnListBooks.setForeground(new java.awt.Color(51, 51, 51));
-        btnListBooks.setText("List all Books");
+        btnListBooks.setText("List New Books");
         btnListBooks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListBooksActionPerformed(evt);
             }
         });
 
-        // issue book
+        // [sidebar] issue book
         btnIssueBook.setBackground(new java.awt.Color(153, 102, 255));
         btnIssueBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnIssueBook.setForeground(new java.awt.Color(51, 51, 51));
@@ -1105,7 +1540,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // return book
+        // [sidebar] return book
         btnListIssuedBooks.setBackground(new java.awt.Color(153, 102, 255));
         btnListIssuedBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnListIssuedBooks.setForeground(new java.awt.Color(51, 51, 51));
@@ -1116,7 +1551,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // book to be retured today
+        // [sidebar] book to be retured today
         btnReturnToday.setBackground(new java.awt.Color(153, 102, 255));
         btnReturnToday.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnReturnToday.setForeground(new java.awt.Color(51, 51, 51));
@@ -1127,7 +1562,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // sign up / withdrawal
+        // [sidebar] sign up / withdrawal
         btnSignUp.setBackground(new java.awt.Color(153, 102, 255));
         btnSignUp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSignUp.setForeground(new java.awt.Color(51, 51, 51));
@@ -1135,6 +1570,28 @@ public class MainFrame extends javax.swing.JFrame {
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignUpActionPerformed(evt);
+            }
+        });
+
+        // [sidebar] join group / club
+        btnJoinGroupClub.setBackground(new java.awt.Color(153, 102, 255));
+        btnJoinGroupClub.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnJoinGroupClub.setForeground(new java.awt.Color(51, 51, 51));
+        btnJoinGroupClub.setText("Join Group / Club");
+        btnJoinGroupClub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJoinGroupClubActionPerformed(evt);
+            }
+        });
+
+        // [sidebar] reserve room
+        btnReserveRoom.setBackground(new java.awt.Color(153, 102, 255));
+        btnReserveRoom.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnReserveRoom.setForeground(new java.awt.Color(51, 51, 51));
+        btnReserveRoom.setText("Reserve Room");
+        btnReserveRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReserveRoomActionPerformed(evt);
             }
         });
 
@@ -1151,7 +1608,10 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(btnIssueBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnListIssuedBooks, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                     .addComponent(btnReturnToday, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                    .addComponent(btnSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
+                    .addComponent(btnSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                    .addComponent(btnJoinGroupClub, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                    .addComponent(btnReserveRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                )
                 .addGap(10, 10, 10)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(76, Short.MAX_VALUE))
@@ -1176,13 +1636,18 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(btnListBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnIssueBook, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
+                        .addGap(18, 18, 18)
                         .addComponent(btnListIssuedBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnReturnToday, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnJoinGroupClub, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnReserveRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                    )
                     .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1209,7 +1674,7 @@ public class MainFrame extends javax.swing.JFrame {
         card.show(mainPanel, "panelSearchBook");
     }
 
-    // [sidebar] list all books
+    // [sidebar] list new books
     private void btnListBooksActionPerformed(java.awt.event.ActionEvent evt) {
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "panelListBooks");
@@ -1245,6 +1710,38 @@ public class MainFrame extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(panelReturnToday, "No book to return Today", "Message", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+
+    /**
+     * @brief event handler
+     * @brief [page] sign up
+     * @brief [button] sidebar
+     */
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelSignUp");
+    }
+
+    /**
+     * @brief event handler
+     * @brief [page] join group / club
+     * @brief [button] sidebar
+     */
+    private void btnJoinGroupClubActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelJoinGroupClub");
+    }
+
+    /**
+     * @brief event handler
+     * @brief [page] join group / club
+     * @brief [button] sidebar
+     */
+    private void btnReserveRoomActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "panelReserveRoom");
     }
 
     // [page] add book
@@ -1387,7 +1884,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
 
-    // [page] list all books
+    // [page] list new books
 
     // [page] issue book
 
@@ -1572,16 +2069,6 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * @brief event handler
      * @brief [page] sign up
-     * @brief [button] sidebar
-     */
-    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "panelSignUp");
-    }
-
-    /**
-     * @brief event handler
-     * @brief [page] sign up
      * @brief [button] create
      */
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1654,13 +2141,98 @@ public class MainFrame extends javax.swing.JFrame {
     private void btnMonthEndSettlementActionPerformed(java.awt.event.ActionEvent evt) {
 
         // insert to db
-        if (dao.deleteWithdrawnMembers()) {
+        if (dao.deleteWithdrawnMembers() && dao.updateVipMembers()) {
 //            JOptionPane.showMessageDialog(panelSignUp, "Delete Account", "Success", JOptionPane.INFORMATION_MESSAGE);
 
             // make text fields blank
             txtWithdrawalID.setText("");
         } else {
 //            JOptionPane.showMessageDialog(panelSignUp, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // [page] join group / club
+
+    /**
+     * @brief [page] join group / club
+     * @brief [button] join group
+     */
+    private void btnJoinGroupActionPerformed(java.awt.event.ActionEvent evt) {
+        // Fetch user input
+        String groupIdStr = txtGroupId.getText().trim();
+        String memberId = txtGroupMemberId.getText().trim();
+        String memberAgeStr = txtGroupMemberAge.getText().trim();
+
+        // Check if fields are empty
+        if (groupIdStr.equals("") || memberId.equals("") || memberAgeStr.equals("")) {
+            JOptionPane.showMessageDialog(panelSignUp, "Fields can't be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            // Parse groupId and memberAge to integers
+            int groupId = Integer.parseInt(groupIdStr);
+            int memberAge = Integer.parseInt(memberAgeStr);
+
+            // Create Group object
+            Group group = new Group(groupId, memberId, memberAge);
+
+            // Call DAO method to join group
+            if (dao.joinGroup(group)) {
+                JOptionPane.showMessageDialog(panelSignUp, "Joined Group", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                // Clear text fields
+                txtGroupId.setText("");
+                txtGroupMemberId.setText("");
+                txtGroupMemberAge.setText("");
+            } else {
+                JOptionPane.showMessageDialog(panelSignUp, "Failed to join group.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(panelSignUp, "Invalid number format for Group ID or Member Age.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /**
+     * @brief [page] join group / club
+     * @brief [button] join club
+     */
+    private void btnJoinClubActionPerformed(java.awt.event.ActionEvent evt)
+    {
+
+
+        // Fetch user input
+        String groupIdStr = txtGroupId.getText().trim();
+        String memberId = txtGroupMemberId.getText().trim();
+        String memberAgeStr = txtGroupMemberAge.getText().trim();
+
+        // Check if fields are empty
+        if (groupIdStr.equals("") || memberId.equals("") || memberAgeStr.equals("")) {
+            JOptionPane.showMessageDialog(panelSignUp, "Fields can't be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            // Parse groupId and memberAge to integers
+            int groupId = Integer.parseInt(groupIdStr);
+            int memberAge = Integer.parseInt(memberAgeStr);
+
+            // Create Group object
+            Group group = new Group(groupId, memberId, memberAge);
+
+            // Call DAO method to join group
+            if (dao.joinGroup(group)) {
+                JOptionPane.showMessageDialog(panelSignUp, "Joined Group", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                // Clear text fields
+                txtGroupId.setText("");
+                txtGroupMemberId.setText("");
+                txtGroupMemberAge.setText("");
+            } else {
+                JOptionPane.showMessageDialog(panelSignUp, "Failed to join group.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(panelSignUp, "Invalid number format for Group ID or Member Age.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -1727,6 +2299,8 @@ public class MainFrame extends javax.swing.JFrame {
     // sidebar
     private javax.swing.JButton btnReturnToday;
     private javax.swing.JButton btnSignUp;
+    private javax.swing.JButton btnJoinGroupClub;
+    private javax.swing.JButton btnReserveRoom;
 
     // panel
     private javax.swing.JPanel mainPanel;
@@ -1736,6 +2310,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panelIssueBook;
     private javax.swing.JPanel panelIssuedBooks;
     private javax.swing.JPanel panelReturnToday;
+    private javax.swing.JPanel panelJoinGroupClub;
+    private javax.swing.JPanel panelReserveRoom;
     private javax.swing.JPanel panelSignUp;
 
     // [Page] Add Book
@@ -1778,6 +2354,31 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnWithdrawal;
     private javax.swing.JButton btnMonthEndSettlement;
 
+    // [page] join group / club
+    private javax.swing.JLabel joinGroupLabel;
+    private javax.swing.JLabel joinclubLabel;
+    private javax.swing.JLabel groupIdLabel;
+    private javax.swing.JLabel groupMemberIdLabel;
+    private javax.swing.JLabel groupMemberAgeLabel;
+    private javax.swing.JLabel clubIdLabel;
+    private javax.swing.JLabel clubNameLabel;
+    private javax.swing.JLabel clubRepresentativeNameLabel;
+    private javax.swing.JLabel clubHeadCountLabel;
+    private javax.swing.JLabel clubAverageAgeLabel;
+    private javax.swing.JTextField txtClubId;
+    private javax.swing.JTextField txtGroupId;
+    private javax.swing.JTextField txtGroupMemberId;
+    private javax.swing.JTextField txtGroupMemberAge;
+    private javax.swing.JTextField txtClubName;
+    private javax.swing.JTextField txtClubRepresentativeName;
+    private javax.swing.JTextField txtClubHeadCount;
+    private javax.swing.JTextField txtClubAverageAge;
+    private javax.swing.JButton btnJoinGroup;
+    private javax.swing.JButton btnJoinClub;
+
+    // [page] reserve room
+    private javax.swing.JLabel reserveRoomLabel;
+
     // 정리 안 된 것들
     private javax.swing.JComboBox<String> ComboBoxSearchBook;
     private javax.swing.JTable bookAuthorTable;
@@ -1796,7 +2397,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchBookIssue1;
     private javax.swing.JButton btnSearchByUsn;
     private javax.swing.JComboBox<String> comboBoxSearchBy;
-
 
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearchBook;

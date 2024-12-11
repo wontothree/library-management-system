@@ -10,6 +10,8 @@ import java.util.Date;
 import com.cruds.model.Book;
 import com.cruds.model.Member;
 import com.cruds.model.Issue;
+import com.cruds.model.Group;
+import com.cruds.model.Club;
 
 //import com.cruds.model.Author;
 //import com.cruds.model.Student;
@@ -230,10 +232,11 @@ public class BookDAO {
 		return new DefaultTableModel(data, colNames);
 	}
 
-	// [page]  list all books
+	// [page]  list new books
 
 	/**
-	 * @brief [page] list all books
+	 * @brief [page] list new books
+	 * @brief [button] sidebar
 	 */
 	public DefaultTableModel getTableBooks() {
 		// SQL query: Select book information from the 'books' table
@@ -610,44 +613,86 @@ public class BookDAO {
 	 * @brief [page] sign up / withdrawal
 	 * @brief [page] month end settlement
 	 */
-	public boolean upgradeVipMembers()
-	{
-		//
-		return false;
+	public boolean updateVipMembers() {
+		try (Connection connection = DBConnectionManager.getConnection()) {
+			// Begin the transaction
+			connection.setAutoCommit(false);
+
+			// Query to retrieve members who have returned items 5 or more times
+			String selectVipEligibleMembersQuery =
+					"SELECT member_id FROM issues " +
+							"WHERE return_date IS NOT NULL " +
+							"GROUP BY member_id " +
+							"HAVING COUNT(*) >= 5";
+
+			try (PreparedStatement selectVipEligibleMembersStmt = connection.prepareStatement(selectVipEligibleMembersQuery);
+				 ResultSet rs = selectVipEligibleMembersStmt.executeQuery()) {
+
+				// Update 'is_vip' to true for each eligible member
+				String updateVipStatusQuery = "UPDATE members SET is_vip = true WHERE member_id = ?";
+				try (PreparedStatement updateVipStatusStmt = connection.prepareStatement(updateVipStatusQuery)) {
+					while (rs.next()) {
+						int memberId = rs.getInt("member_id");
+						updateVipStatusStmt.setInt(1, memberId);
+						updateVipStatusStmt.executeUpdate();
+					}
+				}
+			}
+
+			// Commit the transaction
+			connection.commit();
+
+			// Display an informational message upon successful update
+			JOptionPane.showMessageDialog(null,
+					"VIP status has been successfully updated for eligible members.",
+					"Information",
+					JOptionPane.INFORMATION_MESSAGE);
+			return true; // Return true if all operations are successful
+
+		} catch (SQLException e) {
+			e.printStackTrace(); // Print exception details
+			try (Connection connection = DBConnectionManager.getConnection()) {
+				connection.rollback(); // Roll back the transaction in case of an error
+			} catch (SQLException rollbackEx) {
+				rollbackEx.printStackTrace(); // Log rollback failure
+			}
+			// Display an error message in case of failure
+			JOptionPane.showMessageDialog(null,
+					"An error occurred, and the operation was aborted. Please contact the administrator.",
+					"Error",
+					JOptionPane.ERROR_MESSAGE);
+			return false; // Return false in case of failure
+		}
+	}
+
+	// [page] join group / club
+
+	/**
+	 * @brief [page] join group / club
+	 * @brief [button] join group
+	 */
+	public boolean joinGroup(Group group) {
+		String sql = "INSERT INTO `groups` (group_id, member_id, member_age) VALUES (?, ?, ?)";
+		int rows = 0;
+
+		try (Connection conn = DBConnectionManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, group.getGroupId());
+			ps.setString(2, group.getMemberId());
+			ps.setInt(3, group.getMemberAge());
+
+			rows = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rows > 0;
 	}
 
 
 
 
-
-
-
-
-
-
-
-//
-//	public boolean studentExist(Student stud)
-//	{
-//		String sql = "select usn, name from student where usn = ?";
-//		boolean flag = false;;
-//
-//		try(Connection conn = DBConnectionManager.getConnection())
-//		{
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ps.setString(1, stud.getUsn());
-//			ResultSet rs = ps.executeQuery();
-//			if(rs != null && rs.next())
-//			{
-//				flag = true;
-//			}
-//		}
-//		catch(SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		return flag;
-//	}
 
 	// book to be returned today
 	public DefaultTableModel getBookToReturn(Date curDate)

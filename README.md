@@ -101,15 +101,17 @@ erDiagram
     %% 그룹 테이블을 정의합니다.
     groups {
         int group_id PK
-        string group_name
-        int leader_id FK
+        string member_id FK
+        string member_age
     }
     
     %% 클럽 테이블을 정의합니다.
     clubs {
         int club_id PK
         string club_name
-        int leader_id FK
+        string representative_name
+        int average_age
+        int head_count
     }
 
     %% 멤버-그룹 관계를 정의합니다.

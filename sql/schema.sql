@@ -30,3 +30,20 @@ CREATE TABLE issues (
         ON DELETE CASCADE;
 );
 
+CREATE TABLE `groups` (
+          group_id INT PRIMARY KEY AUTO_INCREMENT,
+          member_id VARCHAR(50),
+          member_age INT,
+          FOREIGN KEY (member_id) REFERENCES members(member_id)
+);
+
+CREATE TABLE clubs (
+           club_id INT NOT NULL AUTO_INCREMENT,
+           club_name VARCHAR(255) NOT NULL,
+           representative_name VARCHAR(255) NOT NULL,
+           average_age INT,
+           head_count INT,
+           PRIMARY KEY (club_id)
+);
+
+
