@@ -46,4 +46,9 @@ CREATE TABLE clubs (
            PRIMARY KEY (club_id)
 );
 
+CREATE TABLE `rooms` (
+         `room_id` INT AUTO_INCREMENT PRIMARY KEY,
+         `room_number` VARCHAR(255) NOT NULL,
+         UNIQUE (`room_number`)
+);
 

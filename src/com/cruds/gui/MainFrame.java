@@ -7,6 +7,7 @@ import com.cruds.model.Member;
 import com.cruds.model.Issue;
 import com.cruds.model.Group;
 import com.cruds.model.Club;
+import com.cruds.model.Rooms;
 
 //import com.cruds.model.Author;
 //import com.cruds.model.Student;
@@ -117,6 +118,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         // [page] reserve room
         reserveRoomLabel = new javax.swing.JLabel();
+        reserveIdLabel = new javax.swing.JLabel();
+        roomNumberLabel = new javax.swing.JLabel();
+        txtReserveId = new javax.swing.JTextField();
+        txtRoomNumber = new javax.swing.JTextField();
+        btnReserve = new javax.swing.JButton();
 
         comboBoxSearchBy = new javax.swing.JComboBox<>();
         txtSearch = new javax.swing.JTextField();
@@ -1311,63 +1317,24 @@ public class MainFrame extends javax.swing.JFrame {
         reserveRoomLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         reserveRoomLabel.setText("Reserve Room");
 
-//
-//        // member id
-//        memberIdLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
-//        memberIdLabel.setText("Member ID");
-//        txtMemberId.setFont(new java.awt.Font("Tahoma", 0, 14));
-//
-//        // full name
-//        fullNameLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
-//        fullNameLabel.setText("Full Name");
-//        txtFullName.setFont(new java.awt.Font("Tahoma", 0, 14));
-//
-//        // phone number
-//        phoneNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
-//        phoneNumberLabel.setText("Phone Number");
-//        txtPhoneNumber.setFont(new java.awt.Font("Tahoma", 0, 14));
-//
-//        // street address
-//        streetAddressLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
-//        streetAddressLabel.setText("Street Address");
-//        txtStreetAddress.setFont(new java.awt.Font("Tahoma", 0, 14));
-//
-//        // email address
-//        emailAddressLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
-//        emailAddressLabel.setText("Email Address");
-//        txtEmailAddress.setFont(new java.awt.Font("Tahoma", 0, 14));
-//
-//        // [button] create
-//        btnAddAccount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-//        btnAddAccount.setText("Create");
-//        btnAddAccount.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                btnCreateActionPerformed(evt);
-//            }
-//        });
-//
-//        // member id
-//        withdrawalIDLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
-//        withdrawalIDLabel.setText("Member ID");
-//        txtWithdrawalID.setFont(new java.awt.Font("Tahoma", 0, 14));
-//
-//        // [button] withdrawal
-//        btnWithdrawal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-//        btnWithdrawal.setText("Withdrawal");
-//        btnWithdrawal.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                btnWithdrawalActionPerformed(evt);
-//            }
-//        });
-//
-//        // [button] month end settlement
-//        btnMonthEndSettlement.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-//        btnMonthEndSettlement.setText("Month End Settlement");
-//        btnMonthEndSettlement.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                btnMonthEndSettlementActionPerformed(evt);
-//            }
-//        });
+        // id
+        reserveIdLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        reserveIdLabel.setText("Member ID / Group ID / Club ID");
+        txtReserveId.setFont(new java.awt.Font("Tahoma", 0, 14));
+
+        // room number
+        roomNumberLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        roomNumberLabel.setText("Room Number");
+        txtRoomNumber.setFont(new java.awt.Font("Tahoma", 0, 14));
+
+        // [button] reserve
+        btnReserve.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnReserve.setText("Reserve");
+        btnReserve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReserveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelReserveRoomLayout = new javax.swing.GroupLayout(panelReserveRoom);
         panelReserveRoom.setLayout(panelReserveRoomLayout);
@@ -1382,31 +1349,21 @@ public class MainFrame extends javax.swing.JFrame {
                                                                 .addGap(100, 100, 100)
                                                                 .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                 .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                                                                .addComponent(memberIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                                                                .addComponent(fullNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                                                                .addComponent(phoneNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                                                                .addComponent(streetAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                                                                .addComponent(emailAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-
-//                                                                .addComponent(withdrawalIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(reserveIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(roomNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                                 )
                                                                 )
 
                                                                 .addGap(18, 18, 18)
                                                                 .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                                                        .addComponent(txtMemberId, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-//                                                        .addComponent(txtFullName, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-//                                                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-//                                                        .addComponent(txtStreetAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-//                                                        .addComponent(txtEmailAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-//
-//                                                        .addComponent(txtWithdrawalID, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                                        .addComponent(txtReserveId, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                                                        .addComponent(txtRoomNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                                                                 )
                                                 )
 
-//                                        .addGroup(panelReserveRoomLayout.createSequentialGroup()
-//                                                .addGap(279, 279, 279)
-//                                                .addComponent(btnAddAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panelReserveRoomLayout.createSequentialGroup()
+                                                .addGap(279, 279, 279)
+                                                .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
 //                                        .addGroup(panelReserveRoomLayout.createSequentialGroup()
 //                                                .addGap(279, 279, 279)
 //                                                .addComponent(btnWithdrawal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1427,55 +1384,22 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addContainerGap()
                                         .addComponent(reserveRoomLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(37, 37, 37)
-//
-//                                // book title
-//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                                        .addComponent(txtMemberId)
-//                                        .addComponent(memberIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                                .addGap(25, 25, 25)
-//
-//                                // full Name
-//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                                        .addComponent(txtFullName)
-//                                        .addComponent(fullNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                                .addGap(25, 25, 25)
-//
-//                                // phone Number
-//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                                        .addComponent(txtPhoneNumber)
-//                                        .addComponent(phoneNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                                .addGap(25, 25, 25)
-//
-//                                // street address
-//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                                        .addComponent(txtStreetAddress)
-//                                        .addComponent(streetAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                                .addGap(25, 25, 25)
-//
-//                                // email address
-//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                                        .addComponent(txtEmailAddress)
-//                                        .addComponent(emailAddressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                                .addGap(25, 25, 25)
-//
-//                                // [button] create
-//                                .addComponent(btnAddAccount)
-//                                .addGap(50, 50, 50)
 
-//
-//                                // member id
-//                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-//                                        .addComponent(txtWithdrawalID)
-//                                        .addComponent(withdrawalIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                                .addGap(25, 25, 25)
-//
-//                                // [button] withdrawal
-//                                .addComponent(btnWithdrawal)
-//                                .addGap(50, 50, 50)
-//
-//                                // [button] withdrawal
-//                                .addComponent(btnMonthEndSettlement)
-//                                .addGap(50, 50, 50)
+                                // id
+                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtReserveId)
+                                        .addComponent(reserveIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+
+                                // room bumber
+                                .addGroup(panelReserveRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtRoomNumber)
+                                        .addComponent(roomNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(25, 25, 25)
+
+                                // [button] reserve
+                                .addComponent(btnReserve)
+                                .addGap(50, 50, 50)
                         )
         );
 
@@ -2165,7 +2089,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         // Check if fields are empty
         if (groupIdStr.equals("") || memberId.equals("") || memberAgeStr.equals("")) {
-            JOptionPane.showMessageDialog(panelSignUp, "Fields can't be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(panelJoinGroupClub, "Fields can't be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -2179,17 +2103,17 @@ public class MainFrame extends javax.swing.JFrame {
 
             // Call DAO method to join group
             if (dao.joinGroup(group)) {
-                JOptionPane.showMessageDialog(panelSignUp, "Joined Group", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(panelJoinGroupClub, "Joined Group", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                 // Clear text fields
                 txtGroupId.setText("");
                 txtGroupMemberId.setText("");
                 txtGroupMemberAge.setText("");
             } else {
-                JOptionPane.showMessageDialog(panelSignUp, "Failed to join group.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(panelJoinGroupClub, "Failed to join group.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(panelSignUp, "Invalid number format for Group ID or Member Age.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(panelJoinGroupClub, "Invalid number format for Group ID or Member Age.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -2197,44 +2121,86 @@ public class MainFrame extends javax.swing.JFrame {
      * @brief [page] join group / club
      * @brief [button] join club
      */
-    private void btnJoinClubActionPerformed(java.awt.event.ActionEvent evt)
-    {
+    private void btnJoinClubActionPerformed(java.awt.event.ActionEvent evt) {
+        // Fetch club information
+        String clubIdStr = txtClubId.getText().trim();
+        String clubName = txtClubName.getText().trim();
+        String clubRepresentativeName = txtClubRepresentativeName.getText().trim();
+        String clubHeadCountStr = txtClubHeadCount.getText().trim();
+        String clubAverageAgeStr = txtClubAverageAge.getText().trim();
 
-
-        // Fetch user input
-        String groupIdStr = txtGroupId.getText().trim();
-        String memberId = txtGroupMemberId.getText().trim();
-        String memberAgeStr = txtGroupMemberAge.getText().trim();
-
-        // Check if fields are empty
-        if (groupIdStr.equals("") || memberId.equals("") || memberAgeStr.equals("")) {
-            JOptionPane.showMessageDialog(panelSignUp, "Fields can't be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+        // Check if any required fields are empty
+        if (clubIdStr.equals("") || clubName.equals("") || clubRepresentativeName.equals("") ||
+                clubHeadCountStr.equals("") || clubAverageAgeStr.equals("")) {
+            JOptionPane.showMessageDialog(panelJoinGroupClub, "Fields can't be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         try {
-            // Parse groupId and memberAge to integers
-            int groupId = Integer.parseInt(groupIdStr);
-            int memberAge = Integer.parseInt(memberAgeStr);
+            // Parse clubId, headCount, and averageAge to integers
+            int clubId = Integer.parseInt(clubIdStr);
+            int headCount = Integer.parseInt(clubHeadCountStr);
+            int averageAge = Integer.parseInt(clubAverageAgeStr);
 
-            // Create Group object
-            Group group = new Group(groupId, memberId, memberAge);
+            // Create Club object
+            Club club = new Club(clubId, clubName, clubRepresentativeName, averageAge, headCount);
 
-            // Call DAO method to join group
-            if (dao.joinGroup(group)) {
-                JOptionPane.showMessageDialog(panelSignUp, "Joined Group", "Success", JOptionPane.INFORMATION_MESSAGE);
+            // Call DAO method to join club (create the club if not exists)
+            if (dao.joinClub(club)) {
+                JOptionPane.showMessageDialog(panelJoinGroupClub, "Successfully joined the club!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                 // Clear text fields
-                txtGroupId.setText("");
-                txtGroupMemberId.setText("");
-                txtGroupMemberAge.setText("");
+                txtClubId.setText("");
+                txtClubName.setText("");
+                txtClubRepresentativeName.setText("");
+                txtClubHeadCount.setText("");
+                txtClubAverageAge.setText("");
             } else {
-                JOptionPane.showMessageDialog(panelSignUp, "Failed to join group.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(panelJoinGroupClub, "Failed to join the club.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(panelSignUp, "Invalid number format for Group ID or Member Age.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(panelJoinGroupClub, "Invalid number format for Club ID, Head Count or Average Age.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    // [page] reserve room
+
+    /**
+     * @brief [page] reserve room
+     * @brief [button] reserve
+     * @param evt
+     */
+    private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {
+        // 텍스트 필드에서 예약에 필요한 값 가져오기
+        String id = txtReserveId.getText().trim();
+        String roomNumber = txtRoomNumber.getText().trim();
+
+        // 필수 입력 필드가 비어있는지 확인
+        if (id.equals("") || roomNumber.equals("")) {
+            JOptionPane.showMessageDialog(panelReserveRoom, "Both fields must be filled out.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            // 예약 처리 로직 (여기서는 예약 ID와 방 번호를 통해 예약을 처리하는 부분)
+            // 예시로, 예약 성공 시 메시지를 띄우고 필드를 초기화하는 로직을 작성
+            boolean reservationSuccess = dao.reserveRoom(id, roomNumber); // `dao.reserveRoom`은 예약을 처리하는 메서드 예시
+
+            if (reservationSuccess) {
+                JOptionPane.showMessageDialog(panelReserveRoom, "Room reserved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                // 예약 후 텍스트 필드 초기화
+                txtReserveId.setText("");
+                txtRoomNumber.setText("");
+            } else {
+                JOptionPane.showMessageDialog(panelReserveRoom, "Failed to reserve the room.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            // 예외 발생 시 처리 (여기서는 일반적인 예외 처리)
+            JOptionPane.showMessageDialog(panelReserveRoom, "An error occurred during reservation.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
     // [logout]
 
@@ -2378,6 +2344,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     // [page] reserve room
     private javax.swing.JLabel reserveRoomLabel;
+    private javax.swing.JLabel reserveIdLabel;
+    private javax.swing.JLabel roomNumberLabel;
+    private javax.swing.JTextField txtReserveId;
+    private javax.swing.JTextField txtRoomNumber;
+    private javax.swing.JButton btnReserve;
 
     // 정리 안 된 것들
     private javax.swing.JComboBox<String> ComboBoxSearchBook;

@@ -12,6 +12,7 @@ import com.cruds.model.Member;
 import com.cruds.model.Issue;
 import com.cruds.model.Group;
 import com.cruds.model.Club;
+import com.cruds.model.Rooms;
 
 //import com.cruds.model.Author;
 //import com.cruds.model.Student;
@@ -689,6 +690,55 @@ public class BookDAO {
 
 		return rows > 0;
 	}
+
+	/**
+	 * @brief [page] join group / club
+	 * @brief [button] join club
+	 */
+	public boolean joinClub(Club club) {
+		String sql = "INSERT INTO `clubs` (club_id, club_name, representative_name, average_age, head_count) VALUES (?, ?, ?, ?, ?)";
+		int rows = 0;
+
+		try (Connection conn = DBConnectionManager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, club.getClubId());
+			ps.setString(2, club.getClubName());
+			ps.setString(3, club.getRepresentativeName());
+			ps.setInt(4, club.getAverageAge());
+			ps.setInt(5, club.getHeadCount());
+
+			rows = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rows > 0;
+	}
+
+	/**
+	 * @brief [page] reserve room
+	 * @brief [button] reserve
+	 */
+	public boolean reserveRoom(String id, String roomNumber) {
+		// rooms 테이블에 삽입하는 SQL
+		String insertRoomSql = "INSERT INTO `rooms` (room_id, room_number) VALUES (?, ?)";
+
+		int rows = 0;
+
+		try (Connection conn = DBConnectionManager.getConnection()) {
+			// `id`와 `roomNumber`를 rooms 테이블에 삽입
+			PreparedStatement psRoom = conn.prepareStatement(insertRoomSql);
+			psRoom.setString(1, id);  // `id`를 room_id로 설정
+			psRoom.setString(2, roomNumber);  // `roomNumber`를 room_number로 설정
+			rows = psRoom.executeUpdate();  // rooms 테이블에 삽입된 행 수
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rows > 0;  // 삽입이 성공했을 경우 true 반환
+	}
+
 
 
 
