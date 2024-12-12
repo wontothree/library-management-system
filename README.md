@@ -1,36 +1,5 @@
 # Library Mangement System
 
-Library Mangement System Project using java and MySQL.
-
-    library-management-system
-    ├── build
-    ├── DatabaseDB.txt
-    ├── dist
-    ├── drivers
-    ├── nbproject
-    ├── screenshots
-    └── src/
-        └── com
-            └── cruds
-                ├── db/                    
-                │   ├── AdminDAO.java                   # 
-                │   ├── BookDAO.java                    # 
-                │   ├── DBConnectionManager.java        # 
-                │   └── TestDBConnection.java           # 
-                │
-                ├── gui/                                # 
-                │   ├── DialogAddStudent.java           # 
-                │   ├── LoginFrame.java                 # 
-                │   └── MainFrame.java                  # 
-                │
-                ├── model/                              # 
-                │   ├── Admin.java                      #
-                │   ├── Author.java                     #
-                │   ├── Book.java                       #
-                │   └── Issue.java                      #
-                │
-                ├── 
-
 # Getting Started
 
 Devcontainer에 접속한다.
@@ -60,14 +29,29 @@ USE [database_name];
 SOURCE sales_orders_database.sql
 ```
 
-## Financial Statement Database
-
-Transaction Table
-
-|id|date|amount|type|category|description|payment_method|created_at|update_at|
-|---|---|---|---|---|---|---|---|---|
-
 Impossible1379!
+
+```bash
+mysql -u root -h 127.0.0.1 -p 
+Enter password: 
+
+mysql> 
+
+CREATE DATABASE library_management
+USE library_management
+SOURCE /Users/kevinliam/Desktop/anthony/development/library-management-system/src/database/schema.sql;
+```
+
+```bash
+cd /Users/kevinliam/Desktop/anthony/development/java-ui/Library-Management/src
+javac com/cruds/gui/MainFrame.java
+
+# build
+javac -d . com/cruds/db/*.java com/cruds/model/*.java com/cruds/gui/MainFrame.java
+
+# start
+java -cp . com.cruds.gui.MainFrame
+```
 
 # Path
 
@@ -75,7 +59,7 @@ Impossible1379!
 export PYTHONPATH="/Users/kevinliam/Desktop/anthony/development/library-management-system"
 ```
 
-# 명세서 원본
+# Development Specification
 
 우수회원이 되기 위해서는 일 년 안에 대출 횟수가 5권 이상이어야 하고 반납 지체가 6개월 내에 5권을 넘으면 안 된다. 우수회원은 20권까지 책을 대여받을 수 있으며 세미나실 예약에 우선권이 있다. 소모임은 대표자, 회원번호, 나이대를 기록한다. 소모임은 세미나실을 사용할 수 있다. 소모임은 도서 구매를 추천하고 책 구매에 우선권을 가진다. 
 
@@ -158,26 +142,3 @@ erDiagram
     books ||--o{ issues : "is issued"
 ```
 
-# Getting Started
-
-```bash
-mysql -u root -h 127.0.0.1 -p 
-Enter password: 
-
-mysql> 
-
-CREATE DATABASE library_management
-USE library_management
-SOURCE /Users/kevinliam/Desktop/anthony/development/library-management-system/src/database/schema.sql;
-```
-
-```bash
-cd /Users/kevinliam/Desktop/anthony/development/java-ui/Library-Management/src
-javac com/cruds/gui/MainFrame.java
-
-# build
-javac -d . com/cruds/db/*.java com/cruds/model/*.java com/cruds/gui/MainFrame.java
-
-# start
-java -cp . com.cruds.gui.MainFrame
-```
