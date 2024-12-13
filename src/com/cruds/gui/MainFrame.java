@@ -33,6 +33,14 @@ public class MainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        // panel
+        mainPanel = new javax.swing.JPanel();
+        panelAddBook = new javax.swing.JPanel();
+        panelSearchBook = new javax.swing.JPanel();
+        panelIssuedBooks = new javax.swing.JPanel();
+        panelJoinGroupClub = new javax.swing.JPanel();
+        panelReserveRoom = new javax.swing.JPanel();
+        panelSignUp = new javax.swing.JPanel();
 
         // [sidebar] button
         btnAddBook = new javax.swing.JButton();
@@ -44,15 +52,6 @@ public class MainFrame extends javax.swing.JFrame {
         btnJoinGroupClub = new javax.swing.JButton();
         btnReserveRoom = new javax.swing.JButton();
         btnSignUp = new javax.swing.JButton();
-
-        // panel
-        mainPanel = new javax.swing.JPanel();
-        panelAddBook = new javax.swing.JPanel();
-        panelSearchBook = new javax.swing.JPanel();
-        panelIssuedBooks = new javax.swing.JPanel();
-        panelJoinGroupClub = new javax.swing.JPanel();
-        panelReserveRoom = new javax.swing.JPanel();
-        panelSignUp = new javax.swing.JPanel();
 
         // [Page] Add Book
         titleLabel = new javax.swing.JLabel();
@@ -178,11 +177,17 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanel.setLayout(new java.awt.CardLayout());
 
         // set size
-        panelSearchBook.setPreferredSize(new java.awt.Dimension(1000, 600));
+        panelSearchBook.setPreferredSize(new java.awt.Dimension(1000, 900));
 
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // [page] Add Book
+
+        // [label]
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(219, 68, 85));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Add Book");
 
         // book title
         titleLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
@@ -246,10 +251,6 @@ public class MainFrame extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(219, 68, 85));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Add Book");
 
         // positioning ui
         javax.swing.GroupLayout panelAddBookLayout = new javax.swing.GroupLayout(panelAddBook);
@@ -384,6 +385,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         // [page] search book
 
+        // label
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(219, 68, 85));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Search Book");
+
         // combobox
         comboBoxSearchBy.setFont(new java.awt.Font("Tahoma", 0, 14));
         comboBoxSearchBy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Title", "Category", "Author", "Book ID" }));
@@ -429,12 +436,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        // label
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 0, 204));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Search Book");
-
         javax.swing.GroupLayout panelSearchBookLayout = new javax.swing.GroupLayout(panelSearchBook);
         panelSearchBook.setLayout(panelSearchBookLayout);
         panelSearchBookLayout.setHorizontalGroup(
@@ -476,6 +477,12 @@ public class MainFrame extends javax.swing.JFrame {
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // [page] list new books
+
+        // label
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel1.setForeground(new java.awt.Color(219, 68, 85));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("List of New Books");
 
         scrollPaneBookAuthor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -535,11 +542,6 @@ public class MainFrame extends javax.swing.JFrame {
         bookAuthorTable.getColumnModel().getColumn(7).setPreferredWidth(30);
         bookAuthorTable.getColumnModel().getColumn(7).setMaxWidth(30);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18));
-        jLabel1.setForeground(new java.awt.Color(204, 0, 204));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("List of New Books");
-
         javax.swing.GroupLayout panelListBooksLayout = new javax.swing.GroupLayout(panelListBooks);
         panelListBooks.setLayout(panelListBooksLayout);
         panelListBooksLayout.setHorizontalGroup(
@@ -571,6 +573,12 @@ public class MainFrame extends javax.swing.JFrame {
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // [page] issue books
+
+        // label
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(219, 68, 85));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Issue Book");
 
         txtSearchBook.setFont(new java.awt.Font("Tahoma", 0, 14));
 
@@ -657,11 +665,6 @@ public class MainFrame extends javax.swing.JFrame {
                 btnSearchBookIssue1ActionPerformed(evt);
             }
         });
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 0, 204));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Issue Book");
 
         javax.swing.GroupLayout panelIssueBookLayout = new javax.swing.GroupLayout(panelIssueBook);
         panelIssueBook.setLayout(panelIssueBookLayout);
@@ -789,7 +792,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 0, 204));
+        jLabel5.setForeground(new java.awt.Color(219, 68, 85));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Return Book");
 
@@ -1421,7 +1424,7 @@ public class MainFrame extends javax.swing.JFrame {
         // [sidebar]
 
         // [sidebar] add book
-        btnAddBook.setBackground(new java.awt.Color(153, 102, 255));
+        btnAddBook.setBackground(new java.awt.Color(219, 68, 85));
         btnAddBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAddBook.setForeground(new java.awt.Color(51, 51, 51));
         btnAddBook.setText("Add Book");
@@ -1432,7 +1435,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         // [sidebar] search book
-        btnSearchBook.setBackground(new java.awt.Color(153, 102, 255));
+        btnSearchBook.setBackground(new java.awt.Color(219, 68, 85));
         btnSearchBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSearchBook.setForeground(new java.awt.Color(51, 51, 51));
         btnSearchBook.setText("Search Book");
@@ -1443,7 +1446,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         // [sidebar] list new books
-        btnListBooks.setBackground(new java.awt.Color(153, 102, 255));
+        btnListBooks.setBackground(new java.awt.Color(219, 68, 85));
         btnListBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnListBooks.setForeground(new java.awt.Color(51, 51, 51));
         btnListBooks.setText("List New Books");
@@ -1454,7 +1457,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         // [sidebar] issue book
-        btnIssueBook.setBackground(new java.awt.Color(153, 102, 255));
+        btnIssueBook.setBackground(new java.awt.Color(219, 68, 85));
         btnIssueBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnIssueBook.setForeground(new java.awt.Color(51, 51, 51));
         btnIssueBook.setText("Issue Book");
@@ -1465,7 +1468,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         // [sidebar] return book
-        btnListIssuedBooks.setBackground(new java.awt.Color(153, 102, 255));
+        btnListIssuedBooks.setBackground(new java.awt.Color(219, 68, 85));
         btnListIssuedBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnListIssuedBooks.setForeground(new java.awt.Color(51, 51, 51));
         btnListIssuedBooks.setText("Return Book");
@@ -1476,7 +1479,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         // [sidebar] book to be retured today
-        btnReturnToday.setBackground(new java.awt.Color(153, 102, 255));
+        btnReturnToday.setBackground(new java.awt.Color(219, 68, 85));
         btnReturnToday.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnReturnToday.setForeground(new java.awt.Color(51, 51, 51));
         btnReturnToday.setText("Book to be returned Today");
@@ -1487,7 +1490,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         // [sidebar] sign up / withdrawal
-        btnSignUp.setBackground(new java.awt.Color(153, 102, 255));
+        btnSignUp.setBackground(new java.awt.Color(219, 68, 85));
         btnSignUp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSignUp.setForeground(new java.awt.Color(51, 51, 51));
         btnSignUp.setText("Sign Up / Withdrawal");
@@ -1498,7 +1501,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         // [sidebar] join group / club
-        btnJoinGroupClub.setBackground(new java.awt.Color(153, 102, 255));
+        btnJoinGroupClub.setBackground(new java.awt.Color(219, 68, 85));
         btnJoinGroupClub.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnJoinGroupClub.setForeground(new java.awt.Color(51, 51, 51));
         btnJoinGroupClub.setText("Join Group / Club");
@@ -1509,7 +1512,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         // [sidebar] reserve room
-        btnReserveRoom.setBackground(new java.awt.Color(153, 102, 255));
+        btnReserveRoom.setBackground(new java.awt.Color(219, 68, 85));
         btnReserveRoom.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnReserveRoom.setForeground(new java.awt.Color(51, 51, 51));
         btnReserveRoom.setText("Reserve Room");

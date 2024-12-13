@@ -1,35 +1,15 @@
 # Library Mangement System
 
+![Add Book](./imgs/add-book.png)
+![Add Book](./imgs/issue-book.png)
+![Add Book](./imgs/list-new-books.png)
+![Add Book](./imgs/return-book.png)
+![Add Book](./imgs/search-book.png)
+![Add Book](./imgs/sign-up-withdrawal.png)
+
 # Getting Started
 
-Devcontainer에 접속한다.
-
-```bash
-vscode ➜ /workspaces/sql (main) $ chmod +x connect_mysql.sh
-vscode ➜ /workspaces/sql (main) $ ./connect_mysql.sh
-Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 8
-Server version: 9.1.0 MySQL Community Server - GPL
-
-Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql> 
-```
-
-```bash
-USE [database_name];
-
-SOURCE sales_orders_database.sql
-```
-
-Impossible1379!
+Contact to MySQL
 
 ```bash
 mysql -u root -h 127.0.0.1 -p 
@@ -42,7 +22,19 @@ USE library_management
 SOURCE /Users/kevinliam/Desktop/anthony/development/library-management-system/src/database/schema.sql;
 ```
 
+Make database and tables
+
 ```bash
+USE [database_name];
+
+SOURCE sales_orders_database.sql
+```
+
+Run MainFrame.java
+
+```bash
+export PYTHONPATH="/Users/kevinliam/Desktop/anthony/development/library-management-system"
+
 cd /Users/kevinliam/Desktop/anthony/development/java-ui/Library-Management/src
 javac com/cruds/gui/MainFrame.java
 
@@ -51,12 +43,6 @@ javac -d . com/cruds/db/*.java com/cruds/model/*.java com/cruds/gui/MainFrame.ja
 
 # start
 java -cp . com.cruds.gui.MainFrame
-```
-
-# Path
-
-```bash
-export PYTHONPATH="/Users/kevinliam/Desktop/anthony/development/library-management-system"
 ```
 
 # Development Specification
@@ -142,3 +128,6 @@ erDiagram
     books ||--o{ issues : "is issued"
 ```
 
+# Reference
+
+I took [Library-Management](https://github.com/git-akshat/Library-Management) as reference
